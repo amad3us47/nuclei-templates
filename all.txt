@@ -1277,7 +1277,6 @@ alltuts-d41d8cd98f00b204e9800998ecf8427e.yaml
 alltuts-ef96569512963bc658103f8a8ed5681f.yaml
 alltuts-fd06e64d7af804419edb565d7233c33f.yaml
 alltuts-theme-d41d8cd98f00b204e9800998ecf8427e.yaml
-all.txt
 allure-real-estate-theme-for-placester-6369fe6eb2f8fc4d6e747a4d469a1919.yaml
 allure-real-estate-theme-for-placester-d41d8cd98f00b204e9800998ecf8427e.yaml
 allure-real-estate-theme-for-placester-theme-d41d8cd98f00b204e9800998ecf8427e.yaml
