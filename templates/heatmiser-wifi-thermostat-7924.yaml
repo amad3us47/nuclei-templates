@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: heatmiser-wifi-thermostat
+info:
+  name: Heatmiser Wifi Thermostat
+  author: dhiyaneshDK
+  severity: info
+  reference:
+    - https://www.exploit-db.com/ghdb/7445
+  metadata:
+    shodan-query: http.title:"Heatmiser Wifi Thermostat"
+  tags: iot
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/index.htm'
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '<title>Heatmiser Wifi Thermostat</title>'
+      - type: status
+        status:
+          - 200

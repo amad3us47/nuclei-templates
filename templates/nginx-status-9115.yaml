@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: nginx-status
+info:
+  name: Nginx Status Page
+  author: dhiyaneshDK
+  severity: low
+  tags: misconfig,nginx
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/nginx_status"
+      - "{{BaseURL}}/nginx-status"
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - 'Active connections:'
+      - type: status
+        status:
+          - 200

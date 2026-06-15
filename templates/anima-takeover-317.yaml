@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: anima-takeover
+info:
+  name: Anima Takeover Detection
+  author: pdteam
+  severity: high
+  tags: takeover
+  reference: https://github.com/EdOverflow/can-i-take-over-xyz
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+    matchers:
+      - type: word
+        words:
+          - "If this is your website and you've just created it, try refreshing in a minute"

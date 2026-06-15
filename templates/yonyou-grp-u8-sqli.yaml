@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: yonyou-grp-u8-sqli
+name: poc-yaml-yonyou-grp-u8-sqli

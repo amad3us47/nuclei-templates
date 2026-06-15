@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: go-anywhere-client
+
+info:
+  name: GoAnywhere client login detection
+  author: iamthefrogy
+  severity: info
+  tags: panel
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/webclient/Login.xhtml"
+
+    redirects: true
+    max-redirects: 2
+    matchers:
+      - type: word
+        words:
+          - "Powered by GoAnywhere"
+          - "GoAnywhere.com"
+        condition: or

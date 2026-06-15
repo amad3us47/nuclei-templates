@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: file-extract
+
+info:
+  name: File with Extractor
+  author: pdteam
+  severity: info
+  tags: file
+
+file:
+  - extensions:
+      - all
+
+    extractors:
+      - type: regex
+        regex:
+          - "(?m)11\\s(EE|FF)\\s11"

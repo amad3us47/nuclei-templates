@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: http-sts
+
+info:
+  name: HTTP STS extraction
+  author: Arqsz
+  severity: info
+  description: "Extract HSTS header if possible"
+  tags: misconfig,headers,remote,basic
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    host-redirects: true
+    max-redirects: 3
+
+    extractors:
+      - type: regex
+        part: all_headers
+        regex:
+          - "(?i)Strict-Transport-Security: .*"

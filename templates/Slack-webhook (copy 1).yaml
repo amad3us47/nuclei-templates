@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: slack-webhook
+
+info:
+  name: Slack Webhook
+  author: gaurang
+  severity: high
+
+file:
+  - extensions:
+      - all
+
+    extractors:
+      - type: regex
+        regex:
+          - "https://hooks.slack.com/services/T[0-9A-Za-z\\-_]{10}/B[0-9A-Za-z\\-_]{10}/[0-9A-Za-z\\-_]{23}"

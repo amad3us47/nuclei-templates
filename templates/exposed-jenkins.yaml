@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: exposed-jenkins
+info:
+  id: exposed-jenkins
+  name: Exposed Jenkins Panel - Detect
+  author: OpenAI
+  description: Template to detect exposed Jenkins panels
+  severity: medium
+  classification:
+    country: any
+    tags:
+      - security
+      - jenkins
+      - exposed-panel
+
+matcher-condition: and
+
+http:
+    method: GET
+    path:
+      - "/jenkins"
+      - "/ci"
+      - "/jenkins/login"
+    description: Attempt to access Jenkins panel
+    condition: and
+
+matchers:
+  - pattern: "Jenkins"
+    type: body
+    description: Jenkins panel banner found in response body
+
+response:
+  - status:
+      - 200
+    description: Successful response status

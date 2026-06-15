@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: open-redirect-generic
+
+info:
+  name: Open Redirect - Detection
+  author: afaq,melbadry9,Elmahdi,pxmme1337,Regala_,andirrahmani1,geeknik
+  severity: medium
+  description: An open redirect vulnerability was detected. An attacker can redirect a user to a malicious site and possibly obtain sensitive information, modify data, and/or execute unauthorized operations.
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+    cwe-id: CWE-601
+  metadata:
+    max-request: 93
+  tags: redirect,generic,vuln
+
+http:
+  - method: GET
+    path:
+      - "{{RootURL}}/{{redirect}}"
+
+    payloads:
+
+# digest: 4b0a00483046022100bcd3d81fb53ddc5b41da41324c062c9570124cd0d31f75d94aa3bd1f683e0d45022100e3539360e622abd6808f1fbe5ad6889d6337a9e34e02900d98c219ca7d7efdf3:922c64590222798bb761d5b6d8e72950

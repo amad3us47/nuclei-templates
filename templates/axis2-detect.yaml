@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: axis2-detect
+
+info:
+  name: Apache Axis2
+  author: notnotnotveg
+  severity: info
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/axis2/services/listServices"
+      - "{{BaseURL}}/dswsbobje/services/listServices"
+    matchers:
+      - type: word
+        words:
+          - "Service Description"
+        part: body

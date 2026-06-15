@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+# info to search signature
+id: joomla-host-injection
+info:
+  name: Joomla Host header Injection
+  author: unknown
+  severity: info
+
+http:
+  - method: GET
+
+reference:
+  - link: https://0day.life/exploit/0day-1247.html

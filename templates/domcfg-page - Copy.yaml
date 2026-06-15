@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: domcfg-page
+info:
+  name: Lotus Domino Configuration Page
+  author: gevakun
+  severity: low
+  reference: https://twitter.com/Wh11teW0lf/status/1295594085445709824
+  tags: exposure
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/domcfg.nsf"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - Web Server Configuration
+          - Mapping
+          - Mappings
+        condition: and
+
+      - type: status
+        status:
+          - 200

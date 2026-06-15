@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: tpshop-directory-traversal-10820
+name: poc-yaml-tpshop-directory-traversal

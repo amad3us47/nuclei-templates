@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: opencast-detect
+
+info:
+  name: Opencast detect
+  author: cyllective
+  severity: info
+  description: Detects Opencast
+  tags: tech,opencast
+  reference:
+    - https://github.com/opencast/opencast
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/admin-ng/login.html"
+
+    matchers:
+      - type: word
+        part: body
+        words:
+          - '<title>Opencast</title>'

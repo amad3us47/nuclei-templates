@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: Synology
+
+info:
+  name: Synology
+  author: 0x240x23elu
+  severity: info
+  tags: panel
+
+http:
+  - method: GET
+    path:
+ #     - "{{BaseURL}}"
+      - "{{BaseURL}}/jhhghj
+    matchers:
+
+      - type: word
+        words:
+          - "Synology Inc."
+          - "Synology"
+        part: body

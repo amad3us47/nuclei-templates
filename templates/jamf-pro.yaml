@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: jamf-pro
+
+http:
+    matchers:
+      - type: word
+        words:
+          - Jamf Pro Login
+        part: title

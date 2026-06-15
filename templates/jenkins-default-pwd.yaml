@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: jenkins-default-pwd
+
+info:
+  name: Jenkins Default Password
+  author: zan8in
+  severity: high
+  description: app="Jenkins"

@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: rstudio-detect
+
+info:
+  name: RStudio panel detector
+  author: philippedelteil
+  severity: info
+  tags: panel,rstudio
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - 'RStudio'
+        part: header
+      - type: status
+        status:
+          - 302

@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: apabi-digital-resource-platform
+name: apabi-digital-resource-platform

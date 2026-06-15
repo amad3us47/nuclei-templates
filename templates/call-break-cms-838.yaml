@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: call-break-cms
+
+info:
+  name: Call Break CMS
+  author: dhiyaneshDk
+  severity: info
+  tags: panel
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}'
+
+    matchers:
+      - type: word
+        words:
+          - '<title>Call Break CMS</title>'
+        condition: and

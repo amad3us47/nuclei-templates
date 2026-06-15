@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: apache-serverstatus
+
+info:
+  name: Apache Server Status Page
+  author: notnotnotveg
+  severity: info
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/server-status"
+    matchers:
+      - type: word
+        words:
+          - "<h1>Apache Server Status for"
+        part: body

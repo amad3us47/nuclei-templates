@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: insecure-crossdomain
+
+info:
+  name: Insecure cross-domain.xml file
+  author: Borna Nematzadeh,nadino
+  severity: info
+  reference:
+    - https://www.acunetix.com/vulnerabilities/web/insecure-crossdomain-xml-file
+  tags: exposure,generic
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/crossdomain.xml"
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        part: body
+        words:
+          - '<allow-access-from domain="*"/>'

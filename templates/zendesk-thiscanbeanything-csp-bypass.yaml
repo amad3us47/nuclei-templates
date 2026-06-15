@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: zendesk-thiscanbeanything-csp-bypass
+
+info:
+  name: Content-Security-Policy Bypass - Zendesk ThisCanBeAnything
+  author: renniepak,DhiyaneshDK
+  severity: medium
+  reference:
+    - https://github.com/renniepak/CSPBypass/blob/main/data.tsv
+  metadata:
+    verified: true
+  tags: xss,csp-bypass,zendesk-thiscanbeanything,vuln
+
+flow: http(1) && headless(1)
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers:
+      - type: word
+        part: header
+        words:
+          - "Content-Security-Policy"
+          - "zendesk.com"
+        condition: and
+        internal: true
+
+headless:
+  - steps:
+      - action: navigate
+        args:
+
+# digest: 4b0a00483046022100d3cc0985b3183d76d0f1efd394275b257c37ff77288d29df11678fcbdb8fe7ce022100c3611f634140a92eda963412b6bf179ad0f24bc2e3509925a21a0485437fcd7e:922c64590222798bb761d5b6d8e72950

@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: Search-for-phpmyadmin-setup-page
+info:
+  name: Find exposed phpmyadmin setup page
+  author: Clark
+  severity: medium
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/phpmyadmin/"
+      - "{{BaseURL}}/phpmyadmin/index.php"
+      - "{{BaseURL}}/phpmyadmin/setup"
+
+    matchers-condition: and
+    matchers:
+
+      - type: word
+        words:
+          - sql
+
+      - type: status
+        status:
+          - 200

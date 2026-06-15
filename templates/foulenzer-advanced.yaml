@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: foulenzer-advanced
+info:
+  name: Advanced workflow with multiple requests
+  author: foulenzer
+  severity: info
+variables:
+
+  generic3: generic-detections/top-15-xss.yaml
+  file2:  files/git-config.yaml
+  file5:  files/public-tomcat-instance.yaml
+  file6:  files/server-status-localhost.yaml
+  file7:  files/shell-history.yaml
+  arbitrary_fr: fuzzing/arbitrary-file-read.yaml
+  directory_trav: fuzzing/directory-traversal.yaml

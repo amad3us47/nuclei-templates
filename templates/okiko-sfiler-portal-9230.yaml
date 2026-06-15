@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: okiko-sfiler-portal
+
+info:
+  name: OKIKO S-Filer Portal Detect
+  author: johnk3r
+  severity: info
+  metadata:
+    shodan-query: http.title:"S-Filer"
+  tags: okiko,panel
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/sfiler/Login.action"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "<title>S-Filer Portal - Login</title>"
+        part: body
+
+      - type: status
+        status:
+          - 200
+
+    extractors:
+      - type: regex
+        part: body
+        group: 1
+        regex:
+          - '<br\/>S\-Filer\/([A-Za-z 0-9.]+)<\/p>'

@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: 74cms-ajax-personal-controller-class-php-sqlinject
+
+info:
+  name: 74 CMS 5.0.1 SQL 注入漏洞
+  author: jinqi
+  severity: high
+  description: 74cms 5.0.1 前台AjaxPersonalController.class.php存在SQL注入漏洞 app="骑士-74CMS"
+  reference:
+    - https://www.cnblogs.com/TJWater/p/14780067.html

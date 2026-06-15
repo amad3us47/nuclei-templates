@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: Serialization
+
+info:
+  name: Serialization
+  author: Excis3
+  severity: critical
+  description: Serialization issue.
+  tags: cve,cisco
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/invoker/readonly"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "JBoss Web"
+
+      - type: status
+        status:
+          - 500

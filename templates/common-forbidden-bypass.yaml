@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: common-forbidden-bypass
+filter: true
+info:
+  name: Common Forbidden Bypass
+  author: unknown
+  severity: info
+
+params:
+  - root: "{{.BaseURL}}"
+
+origin:
+  method: GET
+
+variables:
+  - local: |
+      localhost
+      127.0.0.1
+
+http:
+  - method: GET

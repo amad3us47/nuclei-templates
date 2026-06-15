@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: wordpress-rest-api
+info:
+  name: Wordpress REST API Exposed
+  author: unknown
+  severity: info
+
+params:
+  - root: '{{.BaseURL}}'
+
+variables:
+  - vul: |
+      wp-json/
+http:
+  - method: GET

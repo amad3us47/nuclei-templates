@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: springboot-mappings
+info:
+  name: Detect Springboot Mappings Actuator
+  author: that_juan_ & dwisiswant0 & wdahlenb
+  severity: low
+  description: Additional routes may be displayed
+  tags: springboot,disclosure
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/mappings"
+      - "{{BaseURL}}/actuator/mappings"
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "mappings"
+          - "method"
+          - "produces"
+        condition: and
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "application/json"
+          - "application/vnd.spring-boot.actuator"
+          - "application/vnd.spring-boot.actuator.v1+json"
+        condition: or
+        part: header

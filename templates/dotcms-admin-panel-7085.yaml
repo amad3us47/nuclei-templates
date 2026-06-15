@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: dotcms-admin-panel
+
+info:
+  name: dotAdmin Panel
+  author: impramodsargar
+  severity: info
+  tags: panel
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/dotAdmin/"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '<title>dotCMS Content Management Platform</title>'

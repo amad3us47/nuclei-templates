@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: wordpress-directory-listing
+info:
+  name: Multiples Wordpress Directory Listing
+  author: unknown
+  severity: info
+params:
+  - root: '{{.BaseURL}}'
+variables:
+  - vul: |
+      wp-includes/
+      wp-includes/images/
+      wp-content/
+      wp-content/uploads/
+      wp-content/themes/
+      wp-content/plugins/
+      wp-content/plugins/hustle/views/admin/dashboard/
+      wp-admin/
+http:
+  - method: GET

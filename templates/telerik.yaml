@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: Telerik
+
+info:
+  name: Telerik
+  author: sss
+  severity: high
+  description: Telerik
+  tags: Telerik
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/Telerik.Web.UI.DialogHandler.aspx"
+      - "{{BaseURL}}/Telerik.ReportViewer.axd?instanceID=&optype=Parameters"
+      - "{{BaseURL}}/Telerik.ReportViewer.axd"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - name="__VIEWSTATEGENERATOR"
+      - type: status
+        status:
+          - 200

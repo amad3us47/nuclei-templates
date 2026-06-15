@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: watchguard-panel
+info:
+  name: Watchguard Panel
+  author: ahmetpergamum
+  severity: info
+  reference: https://www.exploit-db.com/ghdb/7008
+  tags: panel,watchguard
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/sslvpn_logon.shtml'
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '<title>User Authentication'
+          - 'WatchGuard Technologies'
+        condition: or
+      - type: status
+        status:
+          - 200

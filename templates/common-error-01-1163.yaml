@@ -1,0 +1,36 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: common-error-01
+info:
+  name: Common case to trigger the error 02
+  author: unknown
+  severity: info
+
+variables:
+  - head: |
+      User-Agent
+      Referer
+      Host
+      Origin
+      Authorization
+      X-Forwarded
+      X-Forwarded-By
+      X-Forwarded-For
+  - prefix: |
+      %ff
+      %23
+      %40
+      ..;/
+      ..%3B/
+      %0A
+      %0D
+      %00
+      ../
+      /////////////////////////////
+
+payloads:
+  - '{{.prefix}}{{.params}}'
+
+http:
+
+  - generators:
+      - Header("{{.payload}}", "{{.head}}")

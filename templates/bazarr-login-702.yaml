@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: bazarr-login-detect
+
+info:
+  name: Bazarr Login Detect
+  author: r3dg33k
+  severity: info
+  reference:
+    - https://www.bazarr.media/
+  tags: panel,bazarr,login
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/login"
+
+    matchers:
+      - type: word
+        words:
+          - '<title>Bazarr</title>'

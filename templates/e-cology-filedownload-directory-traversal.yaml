@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: e-cology-filedownload-directory-traversal
+
+info:
+  name: 泛微OA e-cology 文件下载目录遍历
+  author: l1nk3r
+  severity: critical
+  description: 泛微OA e-cology 文件下载目录遍历 app="Weaver-OA"
+  reference:
+    - https://www.weaver.com.cn/cs/securityDownload.asp

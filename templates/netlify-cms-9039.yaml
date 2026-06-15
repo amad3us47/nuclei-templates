@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: netlify-cms
+info:
+  name: Netlify CMS Admin Panel
+  author: sullo
+  severity: info
+  tags: panel
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/admin/index.html"
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "Netlify CMS"
+        part: body

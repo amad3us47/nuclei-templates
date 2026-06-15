@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: api-harvardart
+
+info:
+  name: Harvard Art Museums API Test
+  author: daffainfo
+  severity: info
+  reference:
+    - https://github.com/harvardartmuseums/api-docs
+    - https://github.com/daffainfo/all-about-apikey/blob/main/Art-Design/Harvard%20Art%20Museums.md
+  tags: token-spray,harvardart
+
+self-contained: true
+http:
+  - method: GET
+    path:
+      - "https://api.harvardartmuseums.org/color/34838442?apikey={{token}}"
+
+    matchers:
+      - type: word
+        part: body
+        words:
+          - '"colorid"'
+          - '"name"'
+          - '"hex"'
+        condition: and

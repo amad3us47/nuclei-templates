@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: unpkg-hyperscript-csp-bypass
+
+info:
+  name: Content-Security-Policy Bypass - Unpkg Hyperscript
+  author: renniepak,DhiyaneshDK
+  severity: medium
+  reference:
+    - https://github.com/renniepak/CSPBypass/blob/main/data.tsv
+  metadata:
+    verified: true
+  tags: xss,csp-bypass,unpkg-hyperscript,vuln
+
+flow: http(1) && headless(1)
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers:
+      - type: word
+        part: header
+        words:
+          - "Content-Security-Policy"
+          - "unpkg.com"
+        condition: and
+        internal: true
+
+headless:
+  - steps:
+      - action: navigate
+        args:
+
+# digest: 4a0a0047304502205e875371e1956deccbcac5e0c24d53773248984105df0809c5d9e547db5365e8022100877ebd63030f3e06ce200630769edc4e6afecbc1fb67388c49cf87a77ed2afc1:922c64590222798bb761d5b6d8e72950

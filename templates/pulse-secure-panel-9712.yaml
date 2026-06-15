@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: pulse-secure-panel
+info:
+  name: Pulse Secure VPN Panel
+  author: bsysop
+  severity: info
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/dana-na/auth/url_default/welcome.cgi"
+    matchers-condition: or
+    matchers:
+      - type: word
+        words:
+          - "/dana-na/auth/welcome.cgi"
+        part: header
+      - type: word
+        words:
+          - "/dana-na/css/ds.css"
+        part: body

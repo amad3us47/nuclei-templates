@@ -1,0 +1,47 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: random-fuzz-02
+info:
+  name: Random Fuzz on Param Basic 02
+  author: unknown
+  severity: info
+
+params:
+  - length: '1000'
+
+origin:
+  method: GET
+
+variables:
+  - name: File("{{.Resources}}/lite-params.txt")
+
+payloads:
+  - >-
+    '
+  - >-
+    -
+  - >-
+    %
+  - >-
+    \"
+  - >-
+    `
+  - >-
+    %00
+  - >-
+    ..;
+  - >-
+    ..
+  - >-
+    %00
+  - >-
+    %0A
+  - >-
+    %0D
+  - >-
+    %ff
+  - >-
+    °
+
+http:
+  - generators:
+      - Query("{{.payload}}", "{{.name}}")

@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: openssl
+
+info:
+  name: OpenSSL
+  author: milo2012
+  severity: info
+  description: Openssl
+  tags: tech,openssl
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: header
+        words:
+          - 'OpenSSL/'
+
+    extractors:
+      - type: regex
+        part: header
+        group: 1
+        regex:
+          - 'OpenSSL/(.*?) '

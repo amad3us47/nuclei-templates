@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: seeyon-wps-assist-servlet-upload
+
+info:
+  name: 致远OA wpsAssistServlet 文件上传
+  author: 123456
+  severity: high
+  description: |
+    致远OA A6、A8、A8N (V8.0SP2，V8.1，V8.1SP1)
+    致远OA G6、G6N (V8.1、V8.1SP1)
+    app="致远互联-OA" && title="V8.0SP2"
+  reference:
+    - http://wiki.peiqi.tech/wiki/oa/%E8%87%B4%E8%BF%9COA/%E8%87%B4%E8%BF%9COA%20wpsAssistServlet%20%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E.html

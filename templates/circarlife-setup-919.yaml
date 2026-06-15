@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: circarlife-setup
+info:
+  name: Exposed CirCarLife Setup Page
+  author: geeknik
+  description: CirCarLife is an internet-connected electric vehicle charging station
+  reference: https://circontrol.com/
+  severity: critical
+  tags: scada,circontrorl,circarlife,setup,exposure,panel
+http:
+  - payloads:
+      Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+
+    threads: 100
+    raw:
+      - |
+        GET /html/setup.html HTTP/1.1
+        Host: {{Subdomains}}
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: header
+        words:
+          - "CirCarLife Scada"
+      - type: word
+        words:
+          - "<title>- setup</title>"
+          - "Network setup"
+          - "Modem setup"
+          - "Security setup"
+        condition: and
+      - type: status
+        status:
+          - 200

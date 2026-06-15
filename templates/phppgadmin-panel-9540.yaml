@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: phppgadmin-panel
+info:
+  name: phpPgAdmin Panel
+  author: Ganofins
+  severity: info
+  tags: panel
+http:
+  - payloads:
+      Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+
+    threads: 100
+    raw:
+      - |
+        GET /phppgadmin/ HTTP/1.1
+        Host: {{Subdomains}}
+        User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)
+    matchers:
+      - type: word
+        words:
+          - "phpPgAdmin"
+          - "browser.php"
+          - "intro.php"
+        condition: and

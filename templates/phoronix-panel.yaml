@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: phoronix-panel
+
+info:
+  name: Phoronix Test Suite Panel Detect
+  author: pikpikcu
+  severity: info
+  metadata:
+    shodan-query: http.title:"phoronix-test-suite"
+  tags: panel,phoronix
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers-condition: and
+    matchers:
+      - type: regex
+        regex:
+          - '<title>Phoronix Test Suite (.*) - Phoromatic - Welcome</title>'
+
+      - type: status
+        status:
+          - 200
+
+    extractors:
+      - type: regex
+        part: body
+        group: 1
+        regex:
+          - "<title>Phoronix Test Suite (.*) - Phoromatic - Welcome</title>"

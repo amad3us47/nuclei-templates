@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: jmx-console
+info:
+  name: JMX Console
+  author: yashanand155
+  severity: low
+  tags: panel,jmx
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/jmx-console/'
+    matchers:
+      - type: word
+        words:
+          - JBoss JMX Management Console

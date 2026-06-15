@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: x-headers-collaborator-fuzz
+
+info:
+  name: X-Headers Fuzzing
+  author: pikpikcu
+  severity: medium
+  tags: headers,fuzz
+
+http:
+
+  - raw:
+      - |
+        GET / HTTP/1.1
+        Host {{Hostname}}
+        {{header}}: {{interactsh-url}}
+
+    payloads:
+      header: helpers/wordlists/x-headers.txt
+
+    matchers-condition: and
+    matchers:
+
+      - type: word
+        part: interactsh_protocol # Confirms the DNS Interaction
+        words:
+          - "http"
+          - "dns"

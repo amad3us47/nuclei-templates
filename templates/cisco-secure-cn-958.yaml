@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: cisco-secure-cn
+
+info:
+  name: Cisco Secure CN
+  author: dhiyaneshDk
+  severity: info
+  tags: panel,cisco
+  metadata:
+    shodan-query: 'http.title:"Cisco Secure CN"'
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/login"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "<title>Cisco Secure CN</title>"
+
+      - type: status
+        status:
+          - 200

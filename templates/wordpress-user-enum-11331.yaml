@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: wordpress-user-enum-01
+info:
+  name: Wordpress REST API user enumeration
+  author: unknown
+  severity: info
+params:
+  - root: '{{.BaseURL}}'
+variables:
+  - vul: |
+      wp-json/wp/v2/users/
+http:
+  - method: GET

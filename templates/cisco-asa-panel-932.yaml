@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: cisco-asa-panel-detect
+
+info:
+  name: Cisco ASA VPN panel detect
+  author: organiccrap
+  severity: info
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/+CSCOE+/logon.html"
+    matchers:
+      - type: word
+        words:
+          - "<title>SSL VPN Service</title>"
+        part: body

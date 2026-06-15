@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: tongda-oa-logincode-any-user-login
+
+info:
+  name: 通达OA v11.5 login_code.php 任意用户登录
+  author: daffainfo
+  severity: critical
+  description: |
+    通达OA是一套办公系统。2020年04月17日, 通达OA官方在更新了一个v11版本安全补丁, 其中修复了一个任意用户伪造登录漏洞。 该漏洞类型为任意用户伪造，未经授权的远程攻击者可以通过精心构造的请求包进行任意用户伪造登录。
+    影响版本
+    通达OA 2017版
+    通达OA版本 V11.X < V11.5
+    fofa-query: app="TDXK-通达OA"
+  reference:
+    - http://wiki.peiqi.tech/wiki/oa/%E9%80%9A%E8%BE%BEOA/%E9%80%9A%E8%BE%BEOA%20v11.5%20login_code.php%20%E4%BB%BB%E6%84%8F%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95.html
+    - https://mp.weixin.qq.com/s/P-LC0fosKu0k7pCiBvQXPw
+    - https://www.ngui.cc/el/1349776.html?action=onClick

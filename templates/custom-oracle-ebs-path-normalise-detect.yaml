@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: custom-oracle-ebs-path-normalise-detect
+
+info:
+        name: custom-oracle-ebs-path-normalise-detect
+        author: 0xParthJ
+        severity: low
+        tags: panel
+
+http:
+        - method: GET
+          path:
+                  - "{{BaseURL}}/forms/%C0%AE/WEB-INF/web.xml"
+          matchers:
+                  - type: word
+                    words:
+                            - "<display-name>Forms Services</display-name>"

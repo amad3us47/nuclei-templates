@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: eea-info-leak-cnvd-2021-10543
+name: poc-yaml-eea-info-leak-cnvd-2021-10543

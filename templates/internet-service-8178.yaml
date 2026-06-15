@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: internet-service
+
+info:
+  name: Internet Services
+  author: dhiyaneshDK
+  severity: low
+  reference: https://www.exploit-db.com/ghdb/5948
+  tags: iot
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/default.htm'
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '<title>Internet Services</title>'
+      - type: status
+        status:
+          - 200

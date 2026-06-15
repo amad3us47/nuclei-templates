@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: CNVD-2019-22239
+
+info:
+    name: Discuz!ML 3.x 任意代码执行
+    author: X.Yang
+    severity: critical

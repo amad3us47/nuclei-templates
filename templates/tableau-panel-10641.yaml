@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: tableau-panel
+info:
+  name: Tableau Python Server Default Page Detect
+  author: pussycat0x
+  severity: info
+  metadata:
+    fofa-dork: 'app="Tableau-Python-Server"'
+  tags: tableau,panel,python
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - '<title>Tableau Python Server</title>'
+      - type: status
+        status:
+          - 200

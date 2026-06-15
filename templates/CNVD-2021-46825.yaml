@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: CNVD-2021-46825
+
+info:
+  name: Apache storm未经授权的访问CNVD-2021-46825
+  author: wulalalaaa(https://github.com/wulalalaaa)
+  severity: critical
+  description: Apache storm存在未经授权的访问漏洞，攻击者可利用该漏洞未授权访问，从而获取敏感信息及进行未授权操作等。
+  reference:
+    - https://storm.apache.org/releases/current/STORM-UI-REST-API.html

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: cockpit-detect
+
+info:
+  name: Detect Agentejo Cockpit
+  author: dwisiswant0
+  severity: info
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/auth/login"
+    matchers:
+      - type: word
+        words:
+          - "<title>Authenticate Please!</title>"

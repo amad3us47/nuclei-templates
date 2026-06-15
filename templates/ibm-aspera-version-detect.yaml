@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: ibm-aspera-version-detect
+
+info:
+  name: IBM Aspera Version Detect
+  author: milo2012
+  severity: info
+  tags: tech,aspera
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+      - "{{BaseURL}}/aspera/faspex/?local=true"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - '<title>Aspera Faspex</title>'
+
+      - type: status
+        status:
+          - 200
+
+    extractors:
+      - type: regex
+        part: body
+        group: 1
+        regex:
+          - 'Credits and notices<\/a>[\r\n]+.*<br/>\((.*?)\)'

@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: thinkphp5-controller-rce
+
+info:
+  name: thinkphp5-controller-rce
+  author: daffainfo
+  severity: critical
+  description: thinkphp5-controller-rce
+  reference:
+    - https://github.com/vulhub/vulhub/tree/master/thinkphp/5-rce

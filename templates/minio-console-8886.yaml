@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: minio-console
+info:
+  name: MinIO Console
+  author: pussycat0x
+  severity: info
+  tags: panel,minio
+  metadata:
+    fofa-query: app="MinIO-Console"
+    shodan-query: title:"MinIO Console"
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/login"
+    matchers-condition: and
+    matchers:
+      - type: dsl
+        dsl:
+          - "contains(tolower(body), '<title>minio console</title>')"
+      - type: status
+        status:
+          - 200

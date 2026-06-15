@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: node-red-detect
+info:
+  name: Node RED Detect
+  author: pikpikcu
+  severity: info
+  tags: tech,apache,node-red-dashboard
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "<title>Node-RED</title>"
+      - type: status
+        status:
+          - 200

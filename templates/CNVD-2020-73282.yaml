@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: CNVD-2020-73282
+
+info:
+    name: 佑友防火墙弱口令
+    author: 你是猪！！！
+    severity: high
+    description: fofa title="佑友防火墙"

@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: adobe-connect-central-login
+
+info:
+  name: Adobe Connect Central Login
+  author: dhiyaneshDk
+  severity: info
+  tags: adobe,panel
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/system/login"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '<title>Adobe Connect Central Login</title>'
+        part: body
+
+      - type: status
+        status:
+          - 200

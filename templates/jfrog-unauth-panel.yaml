@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: jfrog-unauth-panel
+info:
+  name: JFrog Unauth Panel
+  author: unknown
+  severity: info
+
+  references:
+    - links:
+        - https://www.ciphertechs.com/blog/jfrog-artifactory-advisory/
+params:
+  - root: '{{.BaseURL}}'
+
+
+http:
+  - method: GET

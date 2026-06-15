@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: mysql-sqli
+template:
+   name: mysql-sqli
+   severity: high
+   author: zoidsec
+   description: Error Based SQL Injection Discovery
+
+request:
+   payloads:
+      - "'"
+   paths: false
+response:
+   statusCode: 500
+   patterns:
+      - "You have an error in your SQL syntax;"

@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: Git-logs-found
+info:
+  name: Find Git log exposure
+  author: nithissh
+  severity: medium
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/.git/logs/HEAD"
+      - "{{BaseURL}}/.git/COMMIT_EDITMSG"
+      - "{{BaseURL}}/.git/logs/refs/heads/master"
+      - "{{BaseURL}}/.git/config"
+      - "{{BaseURL}}/config.php~"
+      - "{{BaseURL}}/.git/COMMIT_EDITMSG"
+      - "{{BaseURL}}/.git/config"
+      - "{{BaseURL}}/.git/FETCH_HEAD"
+      - "{{BaseURL}}/.git/logs/HEAD"
+      - "{{BaseURL}}/.git/logs/refs/heads/master"
+      - "{{BaseURL}}/.git/logs/refs/remotes/origin/master"
+      - "{{BaseURL}}/.git/refs/heads/master"
+      - "{{BaseURL}}/.git/refs/remotes/origin/master"
+      - "{{BaseURL}}/log/access.log"
+      - "{{BaseURL}}/log/error.log"
+      - "{{BaseURL}}/log/php_errorlog"
+      - "{{BaseURL}}/readme.md"
+      - "{{BaseURL}}/readme.txt"
+    matchers:
+      - type: word
+        words:
+          - "root"
+          - "commit"
+        part: body

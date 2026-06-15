@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: openvpn-monitor-disclosure
+
+info:
+  name: OpenVPN Monitor Disclosure
+  author: geeknik
+  severity: medium
+  description: openvpn-monitor is a simple python program to generate html that displays the status of an OpenVPN server, including all current connections.
+  reference:
+    - https://openvpn-monitor.openbytes.ie/

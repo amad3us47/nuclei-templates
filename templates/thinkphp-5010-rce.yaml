@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: thinkphp-5010-rce
+
+info:
+  name: ThinkPHP 5.0.10 RCE
+  author: zan8in
+  severity: critical
+  description: ThinkPHP <= 5.0.13
+  reference:
+    - https://github.com/Lotus6/ThinkphpGUI/blob/main/ThinkphpGUI/src/main/java/exploit/

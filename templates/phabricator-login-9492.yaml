@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: phabricator-login
+info:
+  name: Phabricator Login
+  author: dhiyaneshDK
+  severity: info
+  tags: panel,phabricator
+  metadata:
+    shodan-query: 'html:"phabricator-standard-page"'
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/auth/login/'
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - 'phabricator-standard-page'
+      - type: status
+        status:
+          - 200

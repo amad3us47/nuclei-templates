@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: iis-directory-listing
+info:
+  name: IIS Directory Listing
+  author: unknown
+  severity: info
+
+params:
+  - root: "{{.BaseURL}}"
+
+variables:
+  - end: |
+      /
+      /aspnet_client/
+      /App_Data/
+http:
+  - method: GET

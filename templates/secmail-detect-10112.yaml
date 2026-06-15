@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: secmail-detect
+
+info:
+  name: SecMail - secure email Detect
+  author: johnk3r
+  severity: info
+  metadata:
+    shodan-query: secmail
+  tags: secmail,panel
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/SecMail/login.jsp"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "Path=/SecMail"
+        part: header
+
+      - type: status
+        status:
+          - 200

@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: seeyon-ajax-unauthorized-access
+name: poc-yaml-seeyon-ajax-unauthorized-access

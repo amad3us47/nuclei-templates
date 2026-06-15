@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: jfrog-login
+
+info:
+  name: JFrog Login
+  author: dhiyaneshDK
+  severity: info
+  reference: https://www.exploit-db.com/ghdb/6797
+  tags: panel,jfrog
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/ui/login/'
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '<title>JFrog</title>'
+      - type: status
+        status:
+          - 200

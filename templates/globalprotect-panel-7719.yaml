@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: globalprotect-panel
+
+info:
+  name: PaloAlto Networks GlobalProtect Panel
+  author: organiccrap
+  severity: info
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/global-protect/login.esp"
+    matchers:
+      - type: word
+        words:
+          - "<title>GlobalProtect Portal</TITLE>"

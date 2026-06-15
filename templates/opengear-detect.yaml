@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: Opengear-Console-Detection
+
+info:
+  name: Opengear Console Detection
+  author: notnotnotveg
+  severity: info
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/"
+    matchers:
+      - type: word
+        words:
+          - "Opengear Management Console"
+        part: body

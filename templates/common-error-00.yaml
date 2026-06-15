@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: common-error-00
+info:
+  name: Common case to trigger the error
+  author: unknown
+  severity: info
+
+variables:
+  - prefix: |
+      %ff
+      %23
+      %40
+      ..;/
+      ..%3B/
+      %0A
+      %0D
+      %00
+      ../
+      /////////////////////////////
+
+payloads:
+  - '{{.prefix}}'
+
+http:
+  - generators:
+      - Path("[[.original]]{{.payload}}", "*")

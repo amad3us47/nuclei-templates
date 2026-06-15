@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: settings-php-files
+
+info:
+  name: settings.php information disclosure
+  author: sheikhrishad
+  severity: medium
+  tags: exposure,backup
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/settings.php.bak"
+      - "{{BaseURL}}/settings.php.dist"
+      - "{{BaseURL}}/settings.php.old"
+      - "{{BaseURL}}/settings.php.save"
+      - "{{BaseURL}}/settings.php.swp"
+      - "{{BaseURL}}/settings.php.txt"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "DB_NAME"
+          - "DB"
+        condition: and
+
+      - type: status
+        status:
+          - 200

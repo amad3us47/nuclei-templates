@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: globalprotect-xss
+info:
+  name: Global Protect XSS
+  author: unknown
+  severity: info
+
+params:
+  - root: "{{.BaseURL}}"
+
+http:
+  - method: GET

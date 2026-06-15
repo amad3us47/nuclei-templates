@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: improper-certificate-validation
+info:
+  name: Improper Certificate Validation
+  author: gaurang
+  severity: medium
+file:
+  - extensions:
+      - all
+    matchers:
+      - type: word
+        words:
+          - "Landroid/webkit/SslErrorHandler;->proceed()V"

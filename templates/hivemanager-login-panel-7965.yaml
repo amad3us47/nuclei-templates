@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: hivemanager-login-panel
+
+info:
+  name: HiveManager Login panel
+  author: binaryfigments
+  severity: info
+  tags: panel,hivemanager,login
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/hm/login.action'
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "HiveManager Login"
+      - type: status
+        status:
+          - 200

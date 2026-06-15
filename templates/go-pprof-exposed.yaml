@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: go-pprof-exposed
+info:
+  name: go pprof exposed
+  author: unknown
+  severity: info
+
+  references:
+    - repo: https://github.com/google/pprof
+params:
+  - root: "{{.BaseURL}}"
+
+variables:
+  - end: |
+      /
+      /debug/pprof/heap?debug=1
+      /_debug/pprof/heap?debug=1
+http:
+  - method: GET

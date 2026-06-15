@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: shiro-detect
+info:
+  name: Detect Shiro Framework
+  author: AresX
+  severity: info
+  tags: tech,shiro
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}'
+    headers:
+      Cookie: JSESSIONID={{randstr}};rememberMe=123;
+    redirects: true
+    max-redirects: 2
+    matchers:
+      - type: word
+        part: header
+        words:
+          - "rememberMe=deleteMe"

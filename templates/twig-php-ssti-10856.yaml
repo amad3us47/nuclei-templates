@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: twig-php-ssti
+info:
+  name: Twig PHP <2.4.4 template engine - SSTI
+  author: madrobot
+  severity: high
+  tags: php,ssti
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/search?search_key={{1337*1338}}"
+    matchers:
+      - type: word
+        words:
+          - "1788906"
+        part: body

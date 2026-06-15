@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: manageengine-apex-helpdesk
+
+info:
+  name: ZOHO ManageEngine APEX IT Help-Desk
+  author: dhiyaneshDK
+  severity: info
+  metadata:
+    shodan-query: http.title:"APEX IT Help Desk"
+  tags: panel,zoho,manageengine
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/jsp/index.jsp'
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '<title>APEX IT Help Desk</title>'
+
+      - type: status
+        status:
+          - 200

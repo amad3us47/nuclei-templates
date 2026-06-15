@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+# info to search signature
+id: sonarqube-cred
+info:
+  name: Sonarqube default credentials
+  author: unknown
+  severity: info
+
+http:
+  - method: POST

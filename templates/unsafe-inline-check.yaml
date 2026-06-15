@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: unsafe-inline-check
+
+info:
+  name: Unsafe Inline Check
+  author: [Your Name Here]
+  severity: low
+  description: Checks for unsafe inline in HTML files.
+
+tags:
+  - html
+  - inline-script
+
+# Define the requests to be made by the template
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+    matchers:
+      - type: word
+        words:
+          - '<script>'
+
+# Define the HTMLHint configuration file
+htmlhint:
+  "tag-pair": true
+  "tagname-lowercase": true
+  "attr-lowercase": true
+  "attr-value-double-quotes": true
+  "doctype-first": false
+  "spec-char-escape": true
+  "id-unique": true
+  "head-script-disabled": true
+  "style-disabled": true
+  "inline-script-disabled": true
+  "space-tab-mixed-disabled": "space"
+  "attr-no-duplication": true
+  "alt-require": true

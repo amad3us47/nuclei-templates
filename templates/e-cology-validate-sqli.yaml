@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: e-cology-validate-sqli
+
+info:
+  name: 泛微OA e-cology validate SQL注入漏洞
+  author: fuping
+  severity: critical
+  description: 泛微OA e-cology validate SQL注入漏洞 app="Weaver-OA"
+  reference:
+    - https://news.ssssafe.com/archives/3325
+    - https://www.weaver.com.cn/cs/securityDownload.asp

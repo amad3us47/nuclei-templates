@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: xvr-login
+info:
+  name: XVR LOGIN
+  author: dhiyaneshDK
+  severity: info
+  metadata:
+    shodan-query: http.title:"XVR LOGIN"
+  tags: panel,xvr
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/login.rsp'
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '<title>XVR LOGIN</title>'
+      - type: status
+        status:
+          - 200

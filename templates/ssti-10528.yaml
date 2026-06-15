@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: ssti-10528
+template:
+  name: ssti-discovery
+  severity: high
+  author: zoidsec
+  description: Server Side Template Injection Discovery
+request:
+  payloads:
+    - "{{7*7}}foobar"
+  paths: false
+response:
+  statusCode: 200
+  patterns:
+    - "49foobar"

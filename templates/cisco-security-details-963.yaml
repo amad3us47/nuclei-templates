@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: cisco-security-details
+
+info:
+  name: Cisco Meraki cloud & Security Appliance details
+  author: dhiyaneshDK
+  severity: info
+  reference: https://www.exploit-db.com/ghdb/6708
+  tags: panel,cisco
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/#connection'
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - 'Your client connection'
+      - type: status
+        status:
+          - 200

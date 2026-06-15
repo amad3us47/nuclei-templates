@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: memcached-stats
+info:
+  name: Memcached stats disclosure
+  author: pdteam
+  severity: low
+  tags: network,memcached
+tcp:
+  - inputs:
+      - data: "stats\r\n\r\nquit\r\n"
+    host:
+      - "{{Hostname}}"
+      - "{{Hostname}}:11211"
+    read-size: 2048
+    matchers:
+      - type: word
+        words:
+          - "STAT "

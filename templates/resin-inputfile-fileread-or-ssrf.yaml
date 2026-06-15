@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: resin-inputfile-fileread-or-ssrf
+name: poc-yaml-resin-inputfile-fileread-or-ssrf

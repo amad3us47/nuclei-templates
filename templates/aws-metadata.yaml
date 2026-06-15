@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: aws-metadata
+
+info:
+  name: AWS Metadata
+  author: notnotnotveg
+  severity: info
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/latest/meta-data/iam/security-credentials/aws-elasticbeanstalk-ec2-role"
+      - "{{BaseURL}}/latest/meta-data/identity-credentials/ec2/security-credentials/ec2-instance"
+    matchers:
+      - type: word
+        words:
+          - "AccessKeyId"
+        condition: or
+        part: body

@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: default-fedora-page
+
+info:
+  name: Fedora Default Test Page
+  author: dhiyaneshDk
+  severity: info
+  tags: tech,fedora
+  reference: https://www.shodan.io/search?query=http.title%3A%22Test+Page+for+the+HTTP+Server+on+Fedora%22
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}'
+    matchers:
+      - type: word
+        words:
+          - '<title>Test Page for the HTTP Server on Fedora</title>'
+        part: body

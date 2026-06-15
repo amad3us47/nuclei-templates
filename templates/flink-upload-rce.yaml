@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: flink-unauth-rce
+
+info:
+  name: Apache Flink Unauth RCE
+  author: pikpikcu
+  severity: critical
+  reference:
+    - https://www.exploit-db.com/exploits/48978
+    - https://adamc95.medium.com/apache-flink-1-9-x-part-1-set-up-5d85fd2770f3
+    - https://github.com/LandGrey/flink-unauth-rce

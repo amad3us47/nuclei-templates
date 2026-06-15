@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: sqli-error-based
+
+info:
+  name: Error based SQL Injection
+  author: geeknik,pdteam
+  severity: critical
+  description: |
+    Direct SQL Command Injection is a technique where an attacker creates or alters existing SQL commands to expose hidden data,
+    or to override valuable ones, or even to execute dangerous system level commands on the database host.
+    This is accomplished by the application taking user input and combining it with static parameters to build an SQL query .
+  metadata:
+    max-request: 3
+  tags: sqli,error,dast,vuln
+
+http:
+  - pre-condition:
+      - type: dsl
+        dsl:
+          - 'method != "OPTIONS"'
+
+    payloads:
+      injection:
+        - "'"
+        - "\""
+        - ";"
+
+    fuzzing:
+      - part: request
+        type: postfix
+        mode: single
+        fuzz:
+          - "{{injection}}"
+
+    stop-at-first-match: true
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "Adminer"
+
+# digest: 4a0a00473045022100b3102693f70190b12ccb6f15140a61b65dd91c218b1e3ea99ea59e75ad8f03170220211591503e0603405ab968f481fb3f615c7c3deb8f5849ac281640b5011fcb30:922c64590222798bb761d5b6d8e72950

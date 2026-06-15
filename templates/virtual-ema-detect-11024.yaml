@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: virtual-ema-detect
+info:
+  name: Virtual EMS Panel Detection
+  author: iamthefrogy
+  severity: info
+  tags: panel
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/virtualems/Login.aspx"
+      - "{{BaseURL}}/VirtualEms/Login.aspx"
+    matchers:
+      - type: word
+        words:
+          - "Login"
+          - "Browse"
+          - "Welcome Guest"
+        condition: and

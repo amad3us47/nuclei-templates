@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: oneblog-detect
+info:
+  name: OneBlog Detect
+  author: pikpikcu
+  severity: info
+  tags: tech,oneblog
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/passport/login/"
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "<title>OneBlog开源博客后台管理系统</title>"
+      - type: status
+        status:
+          - 200

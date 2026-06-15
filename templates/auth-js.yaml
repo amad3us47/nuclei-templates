@@ -1,0 +1,41 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: auth-js
+
+info:
+  name: auth.js
+  author: geeknik
+  severity: high
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/auth.js"
+      - "{{BaseURL}}/api/auth.js"
+      - "{{BaseURL}}/config/auth.js"
+      - "{{BaseURL}}/web/auth.js"
+      - "{{BaseURL}}/src/auth.js"
+      - "{{BaseURL}}/src/api/auth.js"
+      - "{{BaseURL}}/web/api/auth.js"
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "state_token ="
+          - "client_secret"
+        condition: and
+      - type: word
+        part: header
+        words:
+          - "text/plain"
+          - "text/javascript"
+          - "application/javascript"
+          - "application/x-javascript"
+        condition: or
+      - type: word
+        part: header
+        words:
+          - "text/html"

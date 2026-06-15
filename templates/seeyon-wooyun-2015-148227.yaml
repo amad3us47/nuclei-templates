@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: seeyon-wooyun-2015-148227
+name: poc-yaml-seeyon-wooyun-2015-148227

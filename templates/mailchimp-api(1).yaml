@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: mailchimp-api-key
+
+info:
+  name: Mailchimp API Key
+  author: gaurang
+  severity: high
+  tags: token,file,mailchimp
+
+file:
+  - extensions:
+      - all
+
+    extractors:
+      - type: regex
+        regex:
+          - "[0-9a-f]{32}-us[0-9]{1,2}"

@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: sitecore-debug-page
+info:
+  name: SiteCore Debug Page
+  author: dhiyaneshDK
+  severity: low
+  metadata:
+    shodan-query: 'http.title:"Welcome to Sitecore"'
+  tags: debug,sitecore
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/sitecore/'"
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - 'extranet\Anonymous'
+      - type: status
+        status:
+          - 404

@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: wordpress-bbpress-plugin-listing
+info:
+  name: WordPress bbPress Plugin Directory Listing
+  author: dhiyaneshDK
+  severity: info
+  description: Searches for sensitive directories present in the bbpress wordpress plugin.
+  reference:
+    - https://www.exploit-db.com/ghdb/6158
+  tags: wordpress,listing,plugin
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/wp-content/plugins/bbpress/"
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "Index of"
+          - "/wp-content/plugins/bbpress/"
+        condition: and
+      - type: status
+        status:
+          - 200

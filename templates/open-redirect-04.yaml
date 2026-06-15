@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+# info to search signature
+id: open-redirect-04
+info:
+  name: Open Redirect
+  author: unknown
+  severity: info
+
+# jaeles scan -p 'dest=example.com' or -p 'dest=http://example.com' or ...
+params:
+  - dest: '{{.oob}}'
+
+variables:
+  - prefix: |
+      /
+      //
+      ///
+      ///;@
+
+payloads:
+  - "{{.dest}}"
+
+http:
+  - method: GET
+  - generators:
+      - Path("[[.origin]]{{.prefix}}{{.payload}}", "*")
+      - Path("{{.prefix}}{{.payload}}", "*")
+      - Path("{{.payload}}", "*")
+      - Query("{{.prefix}}{{.payload}}")
+      - Query("{{.payload}}")

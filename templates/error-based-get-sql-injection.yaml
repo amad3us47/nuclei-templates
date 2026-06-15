@@ -1,0 +1,39 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: error-based-get-sql-injection
+
+info:
+  name: Error based SQL injection for GET Request
+  author: geeknik
+  severity: critical
+  description: Detects potential SQL injection via error strings in 29 database engines.
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 9.8
+    cwe-id: CWE-89
+  reference:
+    - https://github.com/sqlmapproject/sqlmap/blob/master/data/xml/errors.xml
+  tags: sqli,error,dast
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    payloads:
+      payload: payloads/sql-injection.txt
+
+    fuzzing:
+      - part: query
+        type: postfix
+        mode: single
+        fuzz:
+          - "{{payload}}"
+
+    stop-at-first-match: true
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "Adminer"
+        # False Positive

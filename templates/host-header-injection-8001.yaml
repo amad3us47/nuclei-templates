@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+# info to search signature
+id: host-header-injection
+info:
+  name: Host Header Injection
+  author: unknown
+  severity: info
+
+
+variables:
+  - head: |
+      Host
+  - dest: 'cvebase.com'
+
+payloads:
+  - "{{.dest}}"
+
+http:
+  - method: GET
+  - generators:
+      - Header("{{.payload}}", "{{.head}}")

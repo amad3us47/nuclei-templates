@@ -1,0 +1,42 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: common-route-01
+info:
+  name: Weird Case in route handler
+  author: unknown
+  severity: info
+
+origin:
+  method: GET
+
+variables:
+  - prefix: |
+      %2e
+      %2e%2e
+      %252e
+      %252e%252e
+  - dir: |
+      old/
+      new/
+      backup/
+      bak/
+      db/
+      database/
+      data/
+      sql/
+      tmp/
+      temp/
+      uploads/
+      downloads/
+      intranet/
+      extranet/
+      logs/
+      mails/
+      files/
+      _admin/
+      administrador/
+      administracion/
+      ajax/
+      cms/
+
+http:
+  - method: GET

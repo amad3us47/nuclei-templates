@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: synology-web-station
+info:
+  name: Synology Web Station
+  author: dhiyaneshDK
+  severity: info
+  reference:
+    - https://www.exploit-db.com/ghdb/7125
+  tags: tech,synology
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}'
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '<title>Hello! Welcome to Synology Web Station!</title>'
+      - type: status
+        status:
+          - 200

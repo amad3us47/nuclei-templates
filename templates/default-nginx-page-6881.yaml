@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: default-nginx-page
+info:
+  name: Nginx Default Test Page
+  author: dhiyaneshDk
+  severity: info
+  reference:
+    - https://www.shodan.io/search?query=http.title%3A%22Welcome+to+nginx%21%22
+  tags: tech,nginx
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}'
+    matchers:
+      - type: word
+        words:
+          - "<title>Welcome to nginx!</title>"
+        part: body

@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: node-env
+
+info:
+  name: NODE_ENV Exposed
+  author: shelled
+  severity: info
+  tags: exposure
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "NODE_ENV:"
+
+      - type: status
+        status:
+          - 200

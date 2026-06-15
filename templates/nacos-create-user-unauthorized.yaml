@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: nacos-create-user-unauthorized
+
+info:
+  name: Nacos Unauthorized Create User
+  author: zan8in
+  severity: high
+  description: fofa app="NACOS"

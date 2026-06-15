@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: alienVault-usm
+
+info:
+  name: AlienVault USM
+  author: dhiyaneshDK
+  severity: info
+  tags: panel,alienvault
+  metadata:
+    shodan-query: 'http.title:"AlienVault USM"'
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/ossim/session/login.php'
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '<title>AlienVault USM'
+      - type: status
+        status:
+          - 200

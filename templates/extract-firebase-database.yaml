@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: extract-firebase-database
+
+info:
+  name: Firebase Database Extract Check
+  author: rafaelwdornelas
+  severity: info
+  description: Extract Firebase Database
+  tags: firebase
+
+http:
+  - raw:
+      - | # REQUEST 2
+        GET / HTTP/1.1
+        Host: {{Hostname}}
+
+    extractors:
+      - type: regex
+        regex:
+          - "([a-z0-9.-]+.firebaseio.com)"

@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: basic-cors-misconfig-flash
+
+info:
+  name: Basic CORS misconfiguration exploitable with Flash
+  author: nadino
+  severity: low
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/crossdomain.xml"
+    matchers:
+      - type: word
+        words:
+          - 'allow-access-from domain="*"'
+        part: body

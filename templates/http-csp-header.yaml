@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: http-csp
+
+info:
+  name: HTTP CSP extraction
+  author: Arqsz
+  severity: info
+  description: "Extract CSP header if possible"
+  tags: misconfig,headers,remote,basic
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    host-redirects: true
+    max-redirects: 3
+
+    extractors:
+      - type: regex
+        part: all_headers
+        regex:
+          - "(?i)content-security-policy: .*"

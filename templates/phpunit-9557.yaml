@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: phpunit
+info:
+  name: phpunit.xml file disclosure
+  author: pikpikcu
+  severity: info
+  tags: exposure
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/phpunit.xml"
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "<phpunit"
+          - "</phpunit>"
+        condition: and
+      - type: status
+        status:
+          - 200

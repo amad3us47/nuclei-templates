@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: cobbler-exposed-directories
+
+info:
+  name: Exposed Cobbler Directories
+  author: c-sh0
+  severity: medium
+  description: Searches for exposed Cobbler Directories
+  tags: cobbler,exposure
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/cobbler/"
+      - "{{BaseURL}}/cblr/"
+    matchers:
+      - type: word
+        words:
+          - "Index of /cobbler"
+          - "Index of /cblr"
+        part: body

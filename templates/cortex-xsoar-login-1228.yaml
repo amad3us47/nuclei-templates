@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: cortex-xsoar-login
+
+info:
+  name: Cortex XSOAR Login Panel
+  author: dhiyaneshDK
+  severity: info
+  metadata:
+    shodan-query: http.title:"Cortex XSOAR"
+  tags: panel,soar,login
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/#/login'
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '<title>Cortex XSOAR</title>'
+
+      - type: status
+        status:
+          - 200

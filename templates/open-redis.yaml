@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: open-redis-web
+
+info:
+  name: Open Redis Instance on Web
+  author: CyberCavalcante
+  severity: medium
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/redis/"
+    matchers:
+      - type: word
+        words:
+          - "redis_version:"
+        part: body

@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: vbulletin-workflow
+
+info:
+  name: vBulletin workflow
+  author: pdteam
+  severity: info
+
+variables:
+
+  vbulletin_tech: technologies/tech-detect.yaml
+  vbulletin_cve_1: cves/CVE-2019-16759.yaml
+  vbulletin_cve_2: cves/CVE-2019-16759-1.yaml
+  vbulletin_cve_3: cves/CVE-2020-12720.yaml
+
+  # This will run all 3 CVEs if vbulletin tech is found.
+
+
+  if vbulletin_tech["vbulletin"] {
+
+    vbulletin_cve_1()
+    vbulletin_cve_2()
+    vbulletin_cve_3()
+  }

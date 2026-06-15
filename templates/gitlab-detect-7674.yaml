@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: Gitlab-Detect
+
+info:
+  name: Detect Gitlab
+  author: ehsahil
+  severity: info
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/users/sign_in"
+      - "{{BaseURL}}/users/sign_up"
+      - "{{BaseURL}}/explore"
+    matchers:
+      - type: word
+        words:
+          - "GitLab"
+          - "Register for GitLab"
+          - "Explore GitLab"

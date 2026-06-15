@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: soap-defination-probing
+info:
+  name: SOAP Defination Probing
+  author: unknown
+  severity: info
+
+params:
+  - root: '{{.BaseURL}}'
+
+variables:
+  - swagger: |
+      /
+      /api/
+      /api-docs/
+      /api/static/
+      /api/static/swagger-ui/
+      /swagger/
+      /swagger-ui/
+      /__swagger__/
+      /spec/
+      /docs/
+      /apidocs/
+      /api/v1/
+      /v1/api/
+      /api/v2/
+      /swagger/v1/
+      /swagger/v2/
+      /swagger-resources/restservices/v2/api-docs/
+
+http:
+  - method: GET

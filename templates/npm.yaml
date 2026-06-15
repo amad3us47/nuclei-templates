@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: api-npm
+
+info:
+  name: NPM API Test
+  author: zzeitlin
+  reference: https://docs.npmjs.com/creating-and-viewing-access-tokens
+  severity: info
+  tags: token-spray,node,npm,package,manager
+
+http:
+  - method: GET
+    path:
+      - "https://registry.npmjs.org/-/whoami"
+    headers:
+      Authorization: Bearer {{token}}
+
+    matchers:
+      - type: status
+        status:
+          - 401
+          - 403

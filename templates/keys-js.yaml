@@ -1,0 +1,39 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: keys-js
+
+info:
+  name: keys.js
+  author: geeknik
+  severity: high
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/keys.js"
+      - "{{BaseURL}}/api/keys.js"
+      - "{{BaseURL}}/config/keys.js"
+      - "{{BaseURL}}/web/keys.js"
+      - "{{BaseURL}}/src/keys.js"
+      - "{{BaseURL}}/src/api/keys.js"
+      - "{{BaseURL}}/web/api/keys.js"
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "MONGODB_URI:"
+      - type: word
+        part: header
+        words:
+          - "text/plain"
+          - "text/javascript"
+          - "application/javascript"
+          - "application/x-javascript"
+        condition: or
+      - type: word
+        part: header
+        words:
+          - "text/html"

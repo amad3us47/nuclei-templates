@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: DocCMS-keyword-SQL
+
+info:
+  name: DocCMS keyword SQL注入漏洞
+  author: daffainfo
+  severity: critical
+  description: DocCMS keyword参数存在 SQL注入漏洞，攻击者通过漏洞可以获取数据库信息 app="Doccms"
+  reference:
+    - https://github.com/Threekiii/Awesome-POC/blob/master/CMS%E6%BC%8F%E6%B4%9E/DocCMS%20keyword%20SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E.md

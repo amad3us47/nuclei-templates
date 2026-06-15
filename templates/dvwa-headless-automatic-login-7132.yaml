@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: dvwa-headless-automatic-login
+
+info:
+  name: DVWA Headless Automatic Login
+  author: pdteam
+  severity: high
+  tags: headless,dvwa
+
+headless:
+  - steps:
+      - args:

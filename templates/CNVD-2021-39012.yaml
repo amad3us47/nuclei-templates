@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: CNVD-2021-39012
+
+info:
+    name: Wifisky Default Password
+    author: Print1n(http://print1n.top)
+    severity: high
+    description: |
+        app="WIFISKY-7层流控路由器"
+    reference:
+    - https://securityforeveryone.com/tools/wifisky-default-password-scanner

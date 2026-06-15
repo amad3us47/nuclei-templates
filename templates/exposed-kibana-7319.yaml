@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: exposed-kibana
+info:
+  name: Exposed Kibana
+  author: Shine
+  severity: medium
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/'
+      - '{{BaseURL}}:5601/'
+      - '{{BaseURL}}/app/kibana/'
+      - '{{BaseURL}}:5601/app/kibana/'
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - 'kibanaWelcomeView'
+          - 'cluster_uuid'
+          - 'kibanaWelcomeLogo'
+          - 'kibanaWelcomeTitle'
+      - type: status
+        status:
+          - 200

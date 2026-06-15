@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: android-manifest-backup-enabled
+
+info:
+  name: Android manifest backup enabled
+  author: MrW0l05zyn
+  severity: low
+  tags: file,android,manifest
+
+file:
+  - extensions:
+      - xml
+
+    matchers:
+      - type: word
+        words:
+          - "<manifest"
+          - "<application"
+          - "android:allowBackup=\"true\""
+          - "</manifest>"
+        condition: and
+
+    extractors:
+      - type: regex
+        regex:
+          - "allowBackup=\"true\""

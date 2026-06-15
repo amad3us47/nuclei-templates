@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: ruijie-eweb-rce-cnvd-2021-09650
+name: poc-yaml-ruijie-eweb-rce-cnvd-2021-09650
+
+    payload: base64(phpcode)

@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: uberflip-takeover
+info:
+  name: uberflip takeover detection
+  author: pdteam
+  severity: high
+  reference:
+    - https://github.com/EdOverflow/can-i-take-over-xyz
+  tags: takeover
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+    matchers:
+      - type: word
+        words:
+          - "Non-hub domain, The URL you've accessed does not provide a hub."

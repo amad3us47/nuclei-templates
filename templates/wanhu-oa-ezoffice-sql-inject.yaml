@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: wanhu-oa-ezoffice-sql-inject
+
+info:
+  name: 万户 ezoffice 前台sql注入
+  author: jijue
+  severity: high
+  description: |
+    app="万户网络-ezOFFICE"

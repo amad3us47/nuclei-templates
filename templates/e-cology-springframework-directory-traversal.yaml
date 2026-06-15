@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: e-cology-springframework-directory-traversal
+
+info:
+  name: 泛微OA e-cology springframework 目录遍历
+  author: l1nk3r
+  severity: critical
+  description: 泛微OA e-cology springframework 目录遍历  app="Weaver-OA"
+  reference:
+    - https://www.weaver.com.cn/cs/securityDownload.asp

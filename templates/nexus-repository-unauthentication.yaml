@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: nexus-repository-unauthentication
+info:
+  name: Nexus Repository Unauthentication
+  author: unknown
+  severity: info
+
+params:
+  - root: '{{.BaseURL}}'
+
+
+http:
+  - method: GET

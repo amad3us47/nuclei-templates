@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: valid8-rxss
+
+info:
+  name: RXSS Detection
+  author: Rutger Harmers
+  severity: medium
+
+http:
+  - method: GET
+    path:
+      - "http://testphp.vulnweb.com/listproducts.php?cat=<img/src/onerror=prompt(8)>"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "<img/src/onerror=prompt(8)>"
+      - type: status
+        status:
+          - 200

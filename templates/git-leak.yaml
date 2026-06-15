@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: git-leak
+
+info:
+  name: Git 代码托管泄漏
+  author: zan8in
+  severity: high

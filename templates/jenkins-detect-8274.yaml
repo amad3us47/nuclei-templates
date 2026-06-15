@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: jenkins-detect
+info:
+  name: Jenkins detect (version)
+  author: philippdelteil
+  severity: info
+  tags: tech,jenkins
+http:
+  - payloads:
+      Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+
+    threads: 100
+    raw:
+      - |
+        GET / HTTP/1.1
+        Host: {{Subdomains}}
+        User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
+        Accept-Encoding: gzip, deflate
+        Accept: */*
+    matchers:
+      - type: word
+        words:
+          - "X-Jenkins"
+        part: header
+      - type: word
+        words:
+          - "<title>Sign in [Jenkins]</title>"
+        part: body
+    extractors:
+      - type: kval
+        part: header
+        kval:
+          - x_jenkins

@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: blind-ssrf
+
+info:
+  name: Blind SSRF OAST Detection
+  author: shelled
+  severity: medium
+  tags: ssrf,dast,oast
+
+http:
+  - raw:
+      - |
+        GET {{BaseURL}} HTTP/1.1
+
+    payloads:
+      ssrf:
+        - "https://{{interactsh-url}}"
+        - "http://{{interactsh-url}}"
+
+    fuzzing:
+      - part: query
+        type: replace
+        fuzz:
+          - "{{ssrf}}"
+
+    matchers:
+      - type: word
+        part: interactsh_protocol
+        words:
+          - "http"

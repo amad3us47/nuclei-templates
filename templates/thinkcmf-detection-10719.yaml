@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: thinkcmf-detection
+
+info:
+  name: ThinkCMF Detection
+  author: pikpikcu
+  severity: info
+  tags: thinkcmf
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers-condition: and
+    matchers:
+
+      - type: word
+        words:
+          - "X-Powered-By: ThinkCMF"
+        part: header
+        condition: and
+
+      - type: status
+        status:
+          - 200

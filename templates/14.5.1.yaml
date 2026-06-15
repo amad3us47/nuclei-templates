@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: ASVS-4-0-3-V14-5-1
+
+info:
+  name: ASVS 14.5.1 Check
+  author: Hamed Salimian
+  severity: low
+  classification:
+    cwe-id: CWE-749
+  reference:
+    - https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/06-Test_HTTP_Methods.html
+  tags: asvs,14.5.1
+  description: |
+    Verify that the application server only accepts the HTTP methods in use by the application/API, including pre-flight OPTIONS, and logs/alerts on any requests that are not valid for the application context.
+
+http:
+  - method: TRACE
+    path:
+      - "{{BaseURL}}"
+    headers:
+      Host: "{{Hostname}}"
+    extractors:
+      - type: dsl
+        name: "TRACE method is Enabled"
+        dsl:
+          - status_code
+    matchers-condition: and
+    matchers:
+      - type: status

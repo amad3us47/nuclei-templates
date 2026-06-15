@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: api-mailgun
+
+info:
+  name: Mailgun API Test
+  author: zzeitlin
+  reference: https://documentation.mailgun.com/en/latest/api-intro.html
+  severity: info
+  tags: token-spray,mailgun
+
+http:
+  - method: GET
+    path:
+      - "https://api.mailgun.net/v3/domains"
+    headers:
+      Authorization: Basic {{base64('api:' + token)}}
+
+    matchers:
+      - type: status
+        status:
+          - 200

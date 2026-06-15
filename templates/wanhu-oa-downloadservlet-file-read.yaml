@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: wanhu-oa-downloadservlet-file-read
+
+info:
+  name: 万户OA DownloadServlet 任意文件读取漏洞
+  author: zan8in
+  severity: high
+  description: |
+    万户OA DownloadServlet接口存在任意文件读取漏洞，攻击者通过漏洞可以读取服务器中的敏感文件，获取敏感信息
+    app="万户网络-ezOFFICE"
+  reference:
+    - http://wiki.peiqi.tech/wiki/oa/%E4%B8%87%E6%88%B7OA/%E4%B8%87%E6%88%B7OA%20DownloadServlet%20%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E.html

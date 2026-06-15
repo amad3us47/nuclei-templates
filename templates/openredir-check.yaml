@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: open-redirect-checker
+
+info:
+  name: Open Redirect Checker
+  author: CyberCavalcante
+  severity: medium
+  description: Checks for potential open redirects.
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/redirect?to=https://malicious.com"
+
+    matchers:
+      - type: status
+        status:
+          - 302
+      - type: word
+        words:
+          - "Location: https://malicious.com"

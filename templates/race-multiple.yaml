@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: race-condition-testing
+
+info:
+  name: Race Condition testing
+  author: pdteam
+  severity: info
+
+http:
+  - raw:
+      - |
+        GET / HTTP/1.1
+        Host: {{Hostname}}
+
+        test
+
+    race: true
+    race_count: 10
+
+    matchers:
+      - type: status
+        part: header
+        status:
+          - 200

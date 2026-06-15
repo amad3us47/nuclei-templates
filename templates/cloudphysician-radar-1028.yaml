@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: cloudphysician-radar
+
+info:
+  name: Cloudphysician RADAR
+  author: dhiyaneshDK
+  severity: info
+  reference: https://www.exploit-db.com/ghdb/7466
+  tags: panel
+  metadata:
+    shodan-query: 'http.title:"Cloudphysician RADAR"'
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/login'
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '<title>Cloudphysician RADAR</title>'
+      - type: status
+        status:
+          - 200

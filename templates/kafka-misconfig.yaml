@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: kafka-misconfig
+info:
+  name: Kafka Manger Misconfig
+  author: unknown
+  severity: info
+
+params:
+  - root: '{{.BaseURL}}'
+
+http:
+  - method: GET

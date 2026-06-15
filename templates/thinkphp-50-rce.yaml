@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: thinkphp-50-rce
+
+info:
+  name: Thinkphp 5.0 RCE
+  author: zan8in
+  severity: critical

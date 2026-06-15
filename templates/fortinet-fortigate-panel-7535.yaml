@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: fortinet-fortigate-panel
+
+info:
+  name: Fortinet FortiGate SSL VPN Panel
+  author: bsysop
+  severity: info
+  tags: panel,fortinet,fortigate
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/remote/login"
+
+    redirects: true
+    max-redirects: 2
+    matchers:
+      - type: word
+        words:
+          - "/remote/fgt_lang"
+        part: body

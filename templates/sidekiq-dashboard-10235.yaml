@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: sidekiq-dashboard
+info:
+  name: sidekiq-dashboard
+  author: dhiyaneshDK
+  severity: medium
+  tags: unauth
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/sidekiq"
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - <title>Sidekiq</title>
+        part: body
+      - type: status
+        status:
+          - 200

@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: clickjacking-detect
+
+info:
+  name: Clickjacking - Detect
+  author: geeknik
+  severity: low
+  description: |
+    This template detects potential Clickjacking vulnerabilities. An attacker can trick a user into clicking on a concealed link, which can lead to unauthorized actions.
+  tags: clickjacking,headless
+
+headless:
+  - steps:
+      - args:

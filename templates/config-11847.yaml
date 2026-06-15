@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: config-11847
+blank_issues_enabled: false
+
+contact_links:
+  - name: Ask an question / advise on using nuclei-templates

@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: bing-search
+
+info:
+  name: Bing Search
+  author: Co5mos
+  severity: info
+
+headless:
+  - steps:
+    - args:

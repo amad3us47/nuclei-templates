@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: httpd-config
+
+info:
+  name: Httpd Config file disclosure
+  author: sheikhrishad
+  severity: info
+  tags: config,exposure,httpd
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/httpd.conf"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "LoadModule"
+          - "# LoadModule"
+        condition: and
+
+      - type: status
+        status:
+          - 200

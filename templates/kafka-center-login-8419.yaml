@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: kafka-center-login
+info:
+  name: Kafka Center Login
+  author: dhiyaneshDK
+  severity: info
+  metadata:
+    shodan-query: http.title:"Kafka Center"
+  tags: panel,kafka
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}'
+    redirects: true
+    max-redirects: 2
+    matchers:
+      - type: word
+        words:
+          - '<title>Kafka Center</title>'

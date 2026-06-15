@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: solarwinds-orion
+info:
+  name: SolarWinds Orion Panel
+  author: puzzlepeaches
+  severity: info
+  tags: panel,solarwinds
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/Orion/Login.aspx"
+    matchers:
+      - type: word
+        words:
+          - "SolarWinds Orion"
+        part: body

@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: rack-mini-profiler
+
+info:
+  name: rack-mini-profiler environment information disclosure
+  author: vzamanillo
+  severity: high
+  tags: config,debug,rails
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/?pp=env"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "Rack Environment"
+
+      - type: status
+        status:
+          - 200

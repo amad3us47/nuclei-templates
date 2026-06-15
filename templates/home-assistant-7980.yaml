@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: home-assistant
+
+info:
+  name: Detect Home Assistant
+  author: fabaff
+  severity: info
+  tags: tech,iot
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+    matchers:
+      - type: word
+        words:
+          - "<title>Home Assistant</title>"

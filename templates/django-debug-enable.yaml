@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: django-debug-enable
+info:
+  name: Django Debug Mode Enable
+  author: unknown
+  severity: info
+
+params:
+  - root: '{{.BaseURL}}'
+
+http:
+  - method: GET

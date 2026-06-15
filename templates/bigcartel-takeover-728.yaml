@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: bigcartel-takeover
+
+info:
+  name: Bigcartel Takeover Detection
+  author: pdteam
+  severity: high
+  reference:
+    - https://github.com/EdOverflow/can-i-take-over-xyz
+  tags: takeover
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "<h1>Oops! We couldn&#8217;t find that page.</h1>"
+
+      - type: dsl
+        dsl:
+          - '!contains(host,"bigcartel.com")'

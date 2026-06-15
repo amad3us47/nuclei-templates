@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: bazaarvoice-api-csp-bypass
+
+info:
+  name: Content-Security-Policy Bypass - Bazaarvoice API
+  author: renniepak,DhiyaneshDK
+  severity: medium
+  reference:
+    - https://github.com/renniepak/CSPBypass/blob/main/data.tsv
+  metadata:
+    verified: true
+  tags: xss,csp-bypass,bazaarvoice-api,vuln
+
+flow: http(1) && headless(1)
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers:
+      - type: word
+        part: header
+        words:
+          - "Content-Security-Policy"
+          - "bazaarvoice.com"
+        condition: and
+        internal: true
+
+headless:
+  - steps:
+      - action: navigate
+        args:
+
+# digest: 4a0a0047304502201ca1e8642d7091b2eff9d3a9b945970a730867ecc5ec0f4e6168b430978628eb022100f8a526f2592e47ba088bfb61499449daa38ba77aec1e964077a661451431fc86:922c64590222798bb761d5b6d8e72950

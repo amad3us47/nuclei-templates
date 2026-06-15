@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: custom-sms-service-detect
+
+info:
+        name: custom-sms-service-detect
+        author: 0xunknown
+        severity: low
+        tags: panel
+
+http:
+        - method: GET
+          path:
+                  - "{{BaseURL}}/sms/sms_test.php"
+          matchers:
+                  - type: word
+                    words:
+                            - "<title>SMS Interactive Test</title>"

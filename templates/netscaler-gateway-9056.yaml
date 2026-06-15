@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: netscaler-gateway
+info:
+  name: Netscaler gateway
+  author: joeldeleep
+  severity: info
+  tags: panel,netscaler
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/vpn/index.html"
+    matchers:
+      - type: word
+        words:
+          - <title>Netscaler Gateway</title>

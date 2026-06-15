@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: wordpress-misconfig
+info:
+  name: Wordpress Sensitive path
+  author: unknown
+  severity: info
+
+params:
+  - root: '{{.BaseURL}}'
+
+variables:
+  - infos: |
+      /_wpeprivate/config.json
+      /wp-content/debug.log
+http:
+  - method: GET

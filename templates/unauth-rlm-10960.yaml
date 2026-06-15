@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: unauth-rlm
+info:
+  name: Unauthenticated Reprise License Manager
+  author: Akincibor
+  severity: critical
+  tags: unauth,rlm
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/goforms/menu"
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        part: body
+        words:
+          - "RLM Administration Commands"

@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: seeyon-oa-cookie-leak-login-bypass
+
+info:
+    name: Seeyon OA Cookie Leakage
+    author: Print1n(http://print1n.top)
+    severity: critical
+    description: app="Seeyon-A8"
+    reference:
+        - https://mp.weixin.qq.com/s/0AqdfTrZUVrwTMbKEKresg

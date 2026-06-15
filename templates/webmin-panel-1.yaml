@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: webmin-panel1
+
+info:
+  name: Webmin Admin Panel
+  author: PR3R00T
+  severity: info
+  tags: panel
+
+
+http:
+  - raw:
+      - |
+        GET / HTTP/1.1
+        Host: {{Hostname}}
+        User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)
+    matchers:
+      - type: word
+        words:
+          - "<title>Login to Webmin</title>"
+        part: body

@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: barracuda-panel
+
+info:
+  name: Barracuda SSL VPN Log In
+  author: dhiyaneshDK
+  severity: info
+  tags: barracuda,panel,vpn
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/default/showLogon.do"
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+
+      - type: word
+        words:
+          - 'Barracuda SSL VPN'

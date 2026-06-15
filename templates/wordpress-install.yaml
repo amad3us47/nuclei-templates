@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: wordpress-install
+
+info:
+  name: WordPress Exposed Installation
+  author: princechaddha
+  severity: high
+  reference:
+    - https://smaranchand.com.np/2020/04/misconfigured-wordpress-takeover-to-remote-code-execution/

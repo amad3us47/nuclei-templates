@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: exposed-grafana
+info:
+  id: exposed-grafana
+  name: Exposed Grafana - Detect
+  author: OpenAI
+  description: Template to detect exposed Grafana installations
+  severity: medium
+  classification:
+    country: any
+    tags:
+      - web
+      - security
+      - grafana
+      - exposed
+
+matcher-condition: or
+
+http:
+    method: GET
+    path:
+      - "/grafana"
+      - "/grafana/login"
+    description: Attempt to access Grafana URL
+    condition: or
+
+matchers:
+  - pattern: "Grafana"
+    type: body
+    description: Grafana banner found in response body
+
+response:
+  - status:
+      - 200
+    description: Successful response status

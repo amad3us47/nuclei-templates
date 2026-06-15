@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: cors-00
+info:
+  name: CORS Misconfiguration
+  author: unknown
+  severity: info
+payloads:
+  - 'http://example.com'
+  - 'example.com'
+http:
+  - generators:
+      - Header("{{.payload}}", "Referer")
+      - Header("{{.payload}}", "Origin")

@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: e-cology-syncuserinfo-sqli
+
+info:
+  name: 泛微OA e-cology syncuserinfo SQL注入漏洞
+  author: MaxSecurity(https://github.com/MaxSecurity)
+  severity: critical
+  description: 泛微OA e-cology syncuserinfo SQL注入漏洞 app="Weaver-OA"
+  reference:
+    - https://www.weaver.com.cn/

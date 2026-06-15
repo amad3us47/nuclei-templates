@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: kafka-consumer-monitor
+
+info:
+  name: Kafka Consumer Offset Monitor Exposure
+  author: dhiyaneshDK
+  severity: low
+  metadata:
+    shodan-query: http.title:"Kafka Consumer Offset Monitor"
+  tags: panel,kafka
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}'
+
+    redirects: true
+    max-redirects: 2
+    matchers:
+      - type: word
+        words:
+          - '<title>Kafka Consumer Offset Monitor</title>'

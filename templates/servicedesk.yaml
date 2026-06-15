@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: manageengine-serviecdesk-plus
+
+info:
+  name: ManageEngine ServiceDesk Plus
+  author: milo2012
+  severity: info
+  description: Version of ManageEngine ServiceDesk Plus
+  tags: servicedesk
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+
+      - type: word
+        words:
+          - text/html
+        part: header
+
+      - type: word
+        words:
+          - '<title>ManageEngine ServiceDesk Plus - MSP</title>'
+        part: body
+
+    extractors:
+      - type: regex
+        part: body
+        group: 1
+        regex:
+          - "msp/','(.*)',"

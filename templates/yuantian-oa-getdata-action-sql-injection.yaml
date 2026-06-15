@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: yuantian-oa-getdata-action-sql-injection
+
+info:
+  name: 源天OA GetDataAction SQL注入漏洞
+  author: zan8in
+  severity: high
+  description: |
+    源天OA GetDataAction 接口存在SQL注入漏洞，攻击者通过漏洞可以获取服务器数据库中的数据，造成信息泄漏
+    body="/vmain/login.jsp"
+  reference:
+    - http://wiki.peiqi.tech/wiki/oa/%E6%BA%90%E5%A4%A9OA/%E6%BA%90%E5%A4%A9OA%20GetDataAction%20SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E.html

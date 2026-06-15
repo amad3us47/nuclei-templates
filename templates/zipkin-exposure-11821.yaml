@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: zipkin-exposure
+info:
+  name: Zipkin Exposure
+  author: pdteam
+  severity: low
+  tags: panel
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+      - "{{BaseURL}}/zipkin/"
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "webpackJsonpzipkin-lens"

@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: exposed-env-file
+
+info:
+  name: Exposed .env file
+  author: CyberCavalcante
+  severity: high
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/.env"
+
+    matchers:
+      - type: word
+        words:
+          - "DB_USERNAME="
+          - "DB_PASSWORD="
+        part: body

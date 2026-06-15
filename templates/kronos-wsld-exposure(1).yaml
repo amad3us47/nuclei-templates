@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: Kronos-wsdl-found
+info:
+  name: Find Kronos wsdl exposure (Try XXE)
+  author: Clark
+  severity: medium
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/wfc/webservice/ReportConfigService?wsdl"
+      - "{{BaseURL}}/wfc/XmlService"
+      - "{{BaseURL}}/wfc/"
+    matchers:
+      - type: word
+        words:
+          - "xml-soap"
+          - "application/xml"
+        part: body

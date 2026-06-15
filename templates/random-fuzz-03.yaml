@@ -1,0 +1,50 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: random-fuzz-03
+info:
+  name: Random Fuzz on Path Basic
+  author: unknown
+  severity: info
+
+params:
+  - length: '1000'
+
+origin:
+  method: GET
+
+# variables:
+#   - prefix: |
+#       ..
+
+payloads:
+  - >-
+    '
+  - >-
+    \"
+  - >-
+    `
+  - >-
+    %00
+  - >-
+    \0
+  - >-
+    \u000
+  - >-
+    ..;
+  - >-
+    ..
+  - >-
+    %00
+  - >-
+    %0A
+  - >-
+    %0D
+  - >-
+    %ff
+  - >-
+    °
+  - >-
+    /////////
+
+http:
+  - generators:
+      - Path("{{.payload}}", "*")

@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: contacam
+
+info:
+  name: ContaCam
+  author: dhiyaneshDk
+  severity: low
+  reference:
+    - https://www.exploit-db.com/ghdb/6831
+  tags: iot
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '<title>ContaCam</title>'
+        part: body
+      - type: status
+        status:
+          - 200

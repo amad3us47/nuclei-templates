@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: arcgis-rest-api
+
+info:
+  name: ArcGIS Exposed Docs
+  author: Podalirius
+  severity: info
+  description: ArcGIS documents were discovered.
+  tags: api,arcgis,cms
+  reference:
+    - https://enterprise.arcgis.com/en/
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
+    cve-id:
+    cwe-id: CWE-200
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/server/sdk/rest/index.html'
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - 'ArcGIS REST API'
+
+      - type: status
+        status:
+          - 200
+
+# Enhanced by mp on 2022/03/20

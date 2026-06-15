@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: leostream-panel
+info:
+  name: Leostream Panel Detect
+  author: praetorian-thendrickson
+  severity: info
+  reference:
+    - https://leostream.com
+  metadata:
+    shodan-query: http.title:"Leostream"
+  tags: panel,leostream
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}'
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '<title>Leostream</title>'
+      - type: status
+        status:
+          - 200

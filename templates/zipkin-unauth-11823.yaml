@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: zippkin-unauth
+info:
+  name: zippkin unauth
+  author: unknown
+  severity: info
+params:
+  - root: '{{.BaseURL}}'
+http:
+  - method: GET

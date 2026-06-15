@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: symfony-profiler
+info:
+  name: Symfony Profiler
+  author: pdteam
+  severity: high
+  tags: config,exposure,symfony
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/_profiler/empty/search/results?limit=10"
+    matchers:
+      - type: word
+        words:
+          - "<title>Symfony Profiler</title>"
+          - "symfony/profiler/"
+        condition: and
+        part: body

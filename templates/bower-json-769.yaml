@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: bower-json
+
+info:
+  name: bower.json file disclosure
+  author: oppsec
+  severity: info
+  description: Bower is a package manager which stores package information in the bower.json file
+  tags: exposure
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/bower.json"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "name"
+          - "description"
+          - "main"
+        condition: and
+
+      - type: word
+        words:
+          - "application/json"
+        part: header
+
+      - type: status
+        status:
+          - 200

@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: open-redirect-plus
+
+info:
+  name: Open URL redirect detection
+  author: afaq,melbadry9,Elmahdi,pxmme1337,Regala_,andirrahmani1,geeknik,brinhosa
+  severity: low
+  description: A user-controlled input redirects users to an external website.
+  tags: redirect,generic
+
+http:
+  - raw:
+      - |
+        GET /{{redirect}} HTTP/1.1
+        Host: {{Hostname}}
+
+    payloads:

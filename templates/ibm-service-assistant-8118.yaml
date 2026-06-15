@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: ibm-service-assistant
+
+info:
+  name: IBM Service Assistant
+  author: dhiyaneshDK
+  severity: info
+  metadata:
+    shodan-query: http.title:"Welcome to Service Assistant"
+  tags: panel,ibm,service
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/service/'
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '<title>Welcome to Service Assistant</title>'
+
+      - type: status
+        status:
+          - 200

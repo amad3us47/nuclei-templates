@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: google-api-key-file
+
+info:
+  name: Google API key
+  author: gaurang
+  severity: info
+  tags: token,file,google
+
+file:
+  - extensions:
+      - all
+
+    extractors:
+      - type: regex
+        regex:
+          - "AIza[0-9A-Za-z\\-_]{35}"

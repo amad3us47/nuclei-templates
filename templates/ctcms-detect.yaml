@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: ctcms-detect
+
+info:
+  name: 赤兔CMS
+  author: jijue
+  severity: info
+  description: app="ctcms"

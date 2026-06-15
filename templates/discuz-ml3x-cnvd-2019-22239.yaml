@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: discuz-ml3x-cnvd-2019-22239
+name: poc-yaml-discuz-ml3x-cnvd-2019-22239

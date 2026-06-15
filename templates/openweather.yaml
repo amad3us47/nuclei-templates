@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: api-openweather
+
+info:
+  name: OpenWeather API Test
+  author: zzeitlin
+  reference: https://openweathermap.org/current
+  severity: info
+  tags: token-spray,weather,openweather
+
+http:
+  - method: GET
+    path:
+      - "https://api.openweathermap.org/data/2.5/weather?q=Chicago&appid={{token}}"
+
+    matchers:
+      - type: status
+        status:
+          - 200

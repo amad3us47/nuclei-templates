@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: jira-detect
+info:
+  name: Detect Jira Issue Management Software
+  author: bauthard
+  severity: info
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/secure/Dashboard.jspa"
+      - "{{BaseURL}}/jira/secure/Dashboard.jspa"
+    matchers:
+      - type: word
+        words:
+          - "Project Management Software"

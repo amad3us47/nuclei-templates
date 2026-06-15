@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: oracle-stat
+info:
+  name: Oracle iPlanet Statistics
+  author: unknown
+  severity: info
+
+params:
+  - root: "{{.BaseURL}}"
+
+variables:
+  - stats: |
+      /
+      /.perf
+
+http:
+  - method: GET

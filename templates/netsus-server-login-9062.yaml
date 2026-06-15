@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: netsus-server-login
+info:
+  name: NetSUS Server Login Panel
+  author: dhiyaneshDK
+  severity: info
+  metadata:
+    shodan-query: http.title:"NetSUS Server Login"
+  tags: panel,netsus,login
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/webadmin/'
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '<title>NetSUS Server Login</title>'
+      - type: status
+        status:
+          - 200

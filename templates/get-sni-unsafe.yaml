@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: basic-unsafe-get
+
+info:
+  name: Basic Unsafe GET Request with CLI SNI
+  author: pdteam
+  severity: info
+
+http:
+  - raw:
+      - |+
+        GET / HTTP/1.1
+        Host: {{Hostname}}
+
+    unsafe: true
+    matchers:
+      - type: word
+        words:
+          - "test-ok"

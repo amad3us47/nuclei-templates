@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: nacos-user-list-unauthorized
+
+info:
+    name: Alibaba Nacos V1 Auth Bypass
+    author: kmahyyg(https://github.com/kmahyyg)
+    severity: high
+    description: fofa app="NACOS"

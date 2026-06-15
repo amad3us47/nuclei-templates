@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: fastly-takeover
+
+info:
+  name: fastly takeover detection
+  author: pdcommunity
+  severity: info
+  tags: takeover
+  reference: https://github.com/EdOverflow/can-i-take-over-xyz/issues/22
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers:
+      - type: word
+        words:
+          - "Fastly error: unknown domain:"

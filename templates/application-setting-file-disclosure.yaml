@@ -1,0 +1,36 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: application-setting-file-disclosure
+info:
+  id: application-setting-file-disclosure
+  name: Application Setting File Disclosure - Detect
+  author: OpenAI
+  description: Template to detect disclosure of application setting files
+  severity: high
+  classification:
+    country: any
+    tags:
+      - application
+      - configuration
+
+  matcher-condition: or
+
+  requests:
+      method: GET
+      path:
+        - "/config.php"
+        - "/settings.ini"
+        - "/appsettings.json"
+        - "/appsettings.Production.json"
+      description: Attempt to retrieve application setting files
+      condition: and
+
+  matchers:
+    - pattern: "DB_USERNAME"
+    - pattern: "ConnectionStrings"
+      type: body
+      description: Application setting file containing sensitive database credentials
+
+  response:
+    - status:
+        - 200
+      description: Successful response status

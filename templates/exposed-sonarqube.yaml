@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: exposed-sonarqube
+info:
+  id: exposed-sonarqube
+  name: Exposed SonarQube - Detect
+  author: OpenAI
+  description: Template to detect exposed SonarQube installations
+  severity: medium
+  classification:
+    country: any
+    tags:
+      - web
+      - security
+      - sonarqube
+      - exposed
+
+matcher-condition: or
+
+http:
+    method: GET
+    path:
+      - "/sonarqube"
+      - "/sonar"
+    description: Attempt to access SonarQube URL
+    condition: or
+
+matchers:
+  - pattern: "SonarQube"
+    type: body
+    description: SonarQube banner found in response body
+
+response:
+  - status:
+      - 200
+    description: Successful response status

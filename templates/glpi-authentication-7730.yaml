@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: glpi-authentication
+
+info:
+  name: GLPI - Authentication
+  author: dhiyaneshDK
+  severity: info
+  metadata:
+    shodan-query: http.title:"GLPI - Authentication"
+  tags: panel,auth,glpi
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}'
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '<title>GLPI - Authentication</title>'
+          - 'title="Powered by Teclib and contributors" class="copyright">GLPI Copyright'
+
+      - type: status
+        status:
+          - 200

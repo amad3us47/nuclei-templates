@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: webview-universal-access
+info:
+  name: Webview Universal Access enabled
+  author: gaurang
+  severity: medium
+file:
+  - extensions:
+      - all
+    matchers:
+      - type: word
+        words:
+          - "Landroid/webkit/WebSettings;->setAllowUniversalAccessFromFileURLs(Z)V"

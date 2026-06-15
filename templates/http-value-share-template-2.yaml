@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: value-sharing-template2
+
+info:
+  name: value-sharing-template2
+  author: pdteam
+  severity: info
+
+http:
+  - raw:
+      - |
+        GET / HTTP/1.1
+        Host: {{Hostname}}
+
+        {{extracted}}
+
+    matchers:
+      - type: word
+        words:
+          - "ok"

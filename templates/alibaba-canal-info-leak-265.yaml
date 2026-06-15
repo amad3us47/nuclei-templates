@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: alibaba-canal-info-leak
+info:
+  name: Alibaba Canal Info Leak
+  author: unknown
+  severity: info
+
+  references:
+    - link: https://github.com/alibaba/canal/issues/632
+params:
+  - root: "{{.BaseURL}}"
+
+http:
+  - method: GET

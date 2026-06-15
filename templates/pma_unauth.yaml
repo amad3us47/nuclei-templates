@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: pma_unauth
+
+info:
+  name: pma未授权访问
+  author: str1am
+  severity: high
+  tags: pma
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/pma/setup/index.php"
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "phpMyAdmin setup"
+        part: body
+        condition: and

@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: ems-login-panel
+
+info:
+  name: EMS Login page detection
+  author: __Fazal
+  severity: info
+  tags: panel,ems
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/EMSWebClient/Login.aspx'
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+
+      - type: word
+        words:
+          - "EMS Web Client - Login"

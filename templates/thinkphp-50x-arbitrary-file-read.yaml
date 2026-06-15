@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: thinkphp-50x-arbitrary-file-read
+
+info:
+  name: Thinkphp 5.x Arbitrary file read
+  author: momika233
+  severity: high
+  description: TP5-Arbitrary-file-read
+  reference:
+    - https://github.com/momika233

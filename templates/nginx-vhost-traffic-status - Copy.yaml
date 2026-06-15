@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: nginx-vhost-traffic-status
+
+info:
+  name: Nginx Vhost Traffic Status
+  author: geeknik
+  reference: https://github.com/vozlt/nginx-module-vts
+  severity: low
+  tags: status,nginx,misconfig
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/status"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "Nginx Vhost Traffic Status"
+          - "Host"
+          - "Zone"
+        condition: and
+      - type: status
+        status:
+          - 200

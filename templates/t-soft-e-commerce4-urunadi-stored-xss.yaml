@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: t-soft-e-commerce4-urunadi-stored-xss
+info:
+  name: T-Soft E-Commerce 4 - 'UrunAdi' Stored Cross-Site Scripting (XSS)
+  author: daffainfo
+  severity: high
+  description: Selea OCR-ANPR 摄像机 SeleaCamera 存在任意文件读取漏洞，攻击者通过构造特定的Url读取服务器的文件
+  reference:
+    - https://www.exploit-db.com/exploits/50938

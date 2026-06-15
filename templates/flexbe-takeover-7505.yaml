@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: flexbe-takeover
+info:
+  name: Flexbe Subdomain Takeover
+  author: 0x_Akoko
+  severity: high
+  tags: takeover,flexbe
+  reference:
+    - https://github.com/EdOverflow/can-i-take-over-xyz/issues/237
+    - https://help.flexbe.com/domains/
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+    matchers-condition: and
+    matchers:
+      - type: word
+        condition: and
+        words:
+          - "Domain isn't configured"
+          - "flexbe"
+      - type: status
+        status:
+          - 404

@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: Env-Exposed
+info:
+  name: Find Exposed Env
+  author: Clark
+  severity: medium
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/.env"
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - ADMIN_USER
+        condition: and
+      - type: status
+        status:
+          - 200

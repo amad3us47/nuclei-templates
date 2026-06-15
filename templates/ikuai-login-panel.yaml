@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: ikuai-login-panel
+
+info:
+  name: iKuai 登录爱快流控路由登录页面
+  author: zan8in
+  severity: info
+  description: |
+    title="登录爱快流控路由"

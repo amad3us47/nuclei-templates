@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: oracle-ebs-sqllog-disclosure
+info:
+  name: Oracle EBS SQL Log Disclosure
+  author: unknown
+  severity: info
+
+  references:
+    - links:
+        - https://the-infosec.com/2017/03/29/do-you-know-what-your-erp-is-telling-us/
+params:
+  - root: "{{.BaseURL}}"
+
+variables:
+  - prefix: |
+      /html
+      //html/
+      //OA_HTML/
+
+http:
+  - method: GET

@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: unauthenticated-jenkins
+
+info:
+  name: Unauthenticated Jenkins Dashboard
+  author: dhiyaneshDK
+  severity: high
+  tags: jenkins
+  metadata:
+    max-request: 1
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - Dashboard [Jenkins]
+        condition: and
+
+      - type: status
+        status:
+          - 200

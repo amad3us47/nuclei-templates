@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: fanruanoa2012-detect
+
+info:
+  name: FanRuanOA2012-detect
+  author: YanYun
+  severity: info
+  tags: oa,java,fanruan,tech
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - 'down.download?FM_SYS_ID'

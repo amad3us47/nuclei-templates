@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: file-scheme
+
+info:
+  name: File Scheme Enabled
+  author: gaurang
+  severity: info
+  tags: android,file
+
+file:
+  - extensions:
+      - xml
+
+    matchers:
+      - type: word
+        words:
+          - "android:scheme=\"file\""

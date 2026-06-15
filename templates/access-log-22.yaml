@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: access-log-file
+
+info:
+  name: Publicly accessible access-log file
+  author: sheikhrishad
+  severity: low
+  tags: logs
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/access.log"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '"GET /'
+
+      - type: word
+        words:
+          - "text/plain"
+        part: header
+
+      - type: status
+        status:
+          - 200

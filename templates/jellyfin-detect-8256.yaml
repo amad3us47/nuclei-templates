@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: jellyfin-detect
+info:
+  name: Jellyfin detected
+  author: dwisiswant0
+  severity: info
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/home.html"
+      - "{{BaseURL}}/web/home.html"
+      - "{{BaseURL}}/index.html"
+      - "{{BaseURL}}/web/index.html"
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "name=\"application-name\" content=\"Jellyfin\""
+          - "class=\"page homePage libraryPage allLibraryPage backdropPage pageWithAbsoluteTabs withTabs\""
+        condition: or
+        part: body
+      - type: status
+        status:
+          - 200

@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: sharecenter-login
+info:
+  name: ShareCenter Login Page
+  author: dhiyaneshDk
+  severity: info
+  reference:
+    - https://www.exploit-db.com/ghdb/6892
+  tags: panel,login
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}'
+    matchers:
+      - type: word
+        words:
+          - "ShareCenter"
+          - "Please Select Your Account"
+        condition: and

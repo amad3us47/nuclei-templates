@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: kubernetes-api-detect
+
+info:
+  name: Kubernetes API Detection
+  author: notnotnotveg
+  severity: info
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/pods/"
+      - "{{BaseURL}}:10250/pods/"
+      - "{{BaseURL}}:10255/pods/"
+    matchers:
+      - type: word
+        words:
+          - "PodList"
+        part: body

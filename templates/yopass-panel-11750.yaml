@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: yopass-panel
+info:
+  name: Yopass Application Exposure
+  author: Adam Crosser
+  severity: info
+  metadata:
+    shodan-query: title:"Yopass"
+  tags: panel,yopass
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}'
+    matchers:
+      - type: word
+        words:
+          - "<title>Yopass"

@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: git-leak-01
+info:
+  name: Git Leak Source
+  author: unknown
+  severity: info
+
+params:
+  - root: '{{.BaseURL}}'
+
+variables:
+  - gitfile: |
+      .git/HEAD
+      .git/config
+      .git/logs/HEAD
+      .git/refs/tags
+http:
+  - method: GET
+
+reference:
+  - author: 0xd0ff9

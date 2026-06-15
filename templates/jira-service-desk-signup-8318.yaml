@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: jira-service-desk-signup
+info:
+  name: Jira service desk signup Exposed
+  author: unknown
+  severity: info
+
+params:
+  - root: '{{.BaseURL}}'
+
+variables:
+  - prefix: |
+      /
+      /jira/
+      /wiki/
+      /confluence/
+      /desk/
+
+http:
+  - method: GET
+
+reference:
+  - link: https://medium.com/@intideceukelaire/hundreds-of-internal-servicedesks-exposed-due-to-covid-19-ecd0baec87bd

@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: e-learning-system-authentication-bypass-rce
+
+info:
+  name: E-Learning System 1.0 - Authentication Bypass
+  author: daffainfo
+  severity: critical
+  description: E-Learning System 1.0-通过SQL注入+远程代码执行绕过身份验证
+  reference:
+    - https://www.exploit-db.com/exploits/49434

@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: pinpoint-unauth
+info:
+  name: PinPoint Unauth
+  author: unknown
+  severity: info
+
+  references:
+    - repo: https://github.com/naver/pinpoint
+params:
+  - root: '{{.BaseURL}}'
+
+http:
+  - method: GET

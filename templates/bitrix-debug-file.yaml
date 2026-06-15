@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: bitrix-debug-file
+info:
+  name: Bitrix Debug File Exposure
+  author: trainzment
+  severity: high
+  tags: bitrix, exposure
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/bitrix_server_test.php"
+    matchers:
+      - type: word
+        words:
+          - "phpinfo()"

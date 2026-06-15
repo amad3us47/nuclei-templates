@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: exposed-webalizer
+
+info:
+  name: Publicly exposed Webalizer Interface
+  author: pdteam
+  severity: low
+  tags: panel
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/webalizer/'
+    matchers:
+      - type: word
+        words:
+          - "Webalizer Version"
+          - "Usage statistics for"
+        condition: and

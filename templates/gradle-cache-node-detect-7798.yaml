@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: gradle-cache-node-detect
+
+info:
+  name: Gradle Enterprise Build Cache Node Detect
+  author: Adam Crosser
+  severity: info
+  reference:
+    - https://gradle.com
+  tags: panel,gradle,cache
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}'
+
+    matchers:
+      - type: regex
+        regex:
+          - "<span>Gradle Enterprise Build Cache Node (.*)</span>"
+
+    extractors:
+      - type: regex
+        part: body
+        group: 1
+        regex:
+          - "<span>Gradle Enterprise Build Cache Node (.*)</span>"

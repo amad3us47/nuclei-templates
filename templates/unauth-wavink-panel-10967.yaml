@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: unauth-wavink-panel
+info:
+  name: Unauthenticated Wavlink Panel
+  author: princechaddha
+  severity: high
+  metadata:
+    verified: true
+    shodan-query: http.title:"Wi-Fi APP Login"
+  tags: exposure,wavlink,unauth,misconfig,router
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/wifi_base.shtml"
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "<title>APP</title>"
+      - type: regex
+        part: body
+        regex:
+          - 'var passphraseKey12="(.*)";'
+      - type: word
+        part: body

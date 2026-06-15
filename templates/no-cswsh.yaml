@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: basic-nocswsh-request
+
+info:
+  name: Basic Non-Vulnerable cswsh Request
+  author: pdteam
+  severity: info
+
+websocket:
+  - address: '{{Scheme}}://{{Hostname}}'
+    headers:
+      Origin: 'http://evil.com'
+    matchers:
+      - type: word
+        words:
+          - true
+        part: success

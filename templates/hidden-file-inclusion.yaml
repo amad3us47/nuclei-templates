@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: hidden-file-inclusion
+info:
+  name: Hidden File Inclusion Test
+  author: qaisar
+  severity: high
+  description: |
+    Detects potential security issues related to hidden File Inclusion vulnerabilities.
+
+tags:
+  - web
+
+http:
+  - method: GET
+    path:
+      - "/view-file"
+      - "/include-file"
+    params:
+      file: "../../../../etc/passwd"
+      # Modify the file parameter to detect hidden File Inclusion vulnerabilities
+  # Adjust the payload and parameters based on the target pages susceptible to hidden File Inclusion

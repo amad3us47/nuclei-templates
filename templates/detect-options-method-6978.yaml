@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: detect-options-method
+
+info:
+  name: Detect enabled OPTIONS methods
+  author: pdteam
+  severity: info
+  tags: misc,generic
+
+http:
+  - method: OPTIONS
+    path:
+      - "{{BaseURL}}"
+
+    extractors:
+      - type: regex
+        part: header
+        group: 1
+        regex:
+          - "Allow: ([A-Z, ]+)"

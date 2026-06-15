@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: servfail-refused-hosts
+info:
+  name: Servfail Host Finder
+  author: pdteam
+  severity: info
+  tags: dns,takeover
+dns:
+  - name: "{{FQDN}}"
+    type: A
+    matchers:
+      - type: word
+        words:
+          - "SERVFAIL"
+          - "REFUSED"

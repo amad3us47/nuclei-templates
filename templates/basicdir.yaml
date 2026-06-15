@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: dir-listing
+
+info:
+  name: Directory Listing
+  author: nithissh
+  severity: info
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/logs/"
+      - "{{BaseURL}}/etc/"
+    matchers:
+      - type: word
+        words:
+          - "Index of"
+        part: body

@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: http-missing-security-headers
+
+info:
+  name: HTTP Missing Security Headers
+  author: socketz,geeknik,G4L1T0,convisoappsec,kurohost,dawid-czarnecki
+  severity: info
+  description: It searches for missing security headers, but obviously, could be so less generic and could be useless for Bug Bounty.
+  tags: misconfig,generic
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    redirects: true
+    max-redirects: 3
+    matchers-condition: or
+    matchers:
+      - type: regex
+        name: strict-transport-security
+        regex:
+          - "(?i)strict-transport-security"

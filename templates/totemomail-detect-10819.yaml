@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: totemomail-detect
+info:
+  name: Detect totemomail - Secure email communication
+  author: johnk3r
+  severity: info
+  tags: totemomail,panel
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/responsiveUI/webmail/folder.xhtml"
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "<title>WebMail login: totemomail® WebMail</title>"
+        part: body
+      - type: status
+        status:
+          - 200

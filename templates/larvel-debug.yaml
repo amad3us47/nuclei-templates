@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: larvel-debug-error
+
+info:
+  name: Larvel Debug Method Enabled
+  author: dhiyaneshDK
+  severity: medium
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - Whoops! There was an error
+
+      - type: status
+        status:
+          - 500

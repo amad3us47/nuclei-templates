@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: path-traversal-exposure
+info:
+  id: path-traversal-exposure
+  name: Path Traversal Exposure - Detect
+  author: OpenAI
+  description: Template to detect path traversal exposures
+  severity: high
+  classification:
+    country: any
+    tags:
+      - exposure
+
+  reference:
+    - https://www.owasp.org/index.php/Path_Traversal
+
+  matchers-condition: and
+
+  requests:
+      method: GET
+      path:
+        - "../../../../../../../../../../../etc/passwd"
+        - "../../../../../etc/shadow"
+      description: Attempt to exploit the path traversal vulnerability
+      condition: or
+
+  matchers:
+    - pattern: "root:x"
+      type: body
+      description: Response body containing sensitive data indicating path traversal exposure
+
+  response:
+    - status:
+        - 200

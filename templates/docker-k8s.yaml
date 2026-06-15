@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+# info to search signature
+id: docker-k8s
+info:
+  name: K8S API Exposed
+  author: unknown
+  severity: info
+
+http:
+  - method: GET
+
+reference:
+  - link: https://github.com/vulhub/vulhub/tree/master/docker/unauthorized-rce

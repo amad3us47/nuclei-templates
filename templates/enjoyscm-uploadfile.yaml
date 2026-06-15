@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: enjoyscm-uploadfile
+
+info:
+  name: enjoyscm UploadFile任意文件上传
+  author: zan8in
+  severity: high
+  description: |
+    enjoyscm是国内部分超市使用的一种供应链管理系统。enjoyscm UploadFile参数存在 任意文件上传漏洞，攻击者通过漏洞可以获取服务器权限。
+    fofa：title="供应商网上服务厅"

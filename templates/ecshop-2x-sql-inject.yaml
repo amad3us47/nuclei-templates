@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: ecshop-2x-sql-inject
+
+info:
+  name: ECShop 2.x/3.x SQL 注入/远程代码执行
+  author: jijue
+  severity: high
+  description: |
+    ecshop

@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: jenkins-workflow
+
+info:
+  name: Jenkins workflow
+  author: philippedelteil
+  severity: info
+  description: Workflow that runs all Jenkins related nuclei templates
+workflows:
+  - template: http/technologies/jenkins-detect.yaml
+    subtemplates:
+      - tags: jenkins

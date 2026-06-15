@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: iis-detect
+
+info:
+  name: IIS Detection
+  author: milo2012
+  severity: info
+  tags: tech,iis
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers-condition: and
+    matchers:
+
+      - type: regex
+        part: header
+        regex:
+          - "Microsoft-IIS+"
+
+    extractors:
+      - type: regex
+        part: header
+        group: 1
+        regex:
+          - "Microsoft-IIS/(.*)"

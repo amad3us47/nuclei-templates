@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: spark-webui-unauth
+
+info:
+  name: Unauthenticated Spark WebUI
+  author: princechaddha
+  severity: medium
+  reference:
+    - https://github.com/vulhub/vulhub/tree/master/spark/unacc
+  tags: spark,unauth
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "<title>Spark Master at spark://"
+          - "<strong>URL:</strong>"
+        part: body
+        condition: and

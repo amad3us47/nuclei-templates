@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: sonicwall-sslvpn-panel
+info:
+  name: SonicWall Virtual Office SSLVPN Panel
+  author: PR3R00T
+  severity: info
+  tags: panel,sonicwall
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/cgi-bin/welcome"
+    matchers:
+      - type: word
+        words:
+          - "<title>Virtual Office</title>"

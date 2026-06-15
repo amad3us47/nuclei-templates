@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: error-based-sql-injection
+info:
+  name: Error based SQL injection
+  author: geeknik
+  severity: high
+  description: Detects the possibility of SQL injection in 29 database engines. Inspired by https://github.com/sqlmapproject/sqlmap/blob/master/data/xml/errors.xml.
+  tags: sqli
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/'"
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "Adminer"
+        # False Positive
+        part: body

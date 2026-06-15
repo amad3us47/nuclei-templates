@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: graylog-api-browser
+
+info:
+  name: Detect Graylog REST API
+  author: PR3R00T
+  severity: info
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/api/api-browser/"
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "Graylog"
+          - "REST API browser"
+          - "swagger"
+        condition: and
+      - type: status
+        status:
+          - 200

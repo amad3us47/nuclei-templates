@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: leostream-panel
+info:
+  name: Leostream Panel
+  author: praetorian-thendrickson
+  severity: info
+  tags: panel,vdi
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/'
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '<title>Leostream'
+          - 'https://www.leostream.com/perpetual-software-license-agreement/'

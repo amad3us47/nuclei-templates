@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: display-via-header
+
+info:
+  name: Display Via Header
+  author: geeknik
+  reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Via
+  severity: info
+  tags: misc
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    redirects: true
+    extractors:
+      - type: regex
+        part: header
+        regex:
+          - "Via:.*"

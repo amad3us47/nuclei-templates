@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: coldfusion-lucee-auth-bypass
+info:
+  name: Adobe ColdFusion Lucee Auth Bypass
+  author: unknown
+  severity: info
+
+params:
+  - root: "{{.BaseURL}}"
+
+http:
+  - method: POST
+
+reference:
+  - links:
+      - https://github.com/httpvoid/writeups/blob/main/Apple-RCE.md

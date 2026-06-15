@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: movable-type-login
+info:
+  name: Movable Type Pro
+  author: dhiyaneshDk
+  severity: info
+  tags: panel,movable
+  metadata:
+    shodan-query: 'title:"サインイン | Movable Type Pro"'
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/mt/admin'
+      - '{{BaseURL}}/mt.cgi'
+    stop-at-first-match: true
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "Movable Type Pro"
+      - type: status
+        status:
+          - 200

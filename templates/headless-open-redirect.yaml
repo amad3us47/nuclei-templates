@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: headless-open-redirect
+
+info:
+  name: Open Redirect - Detect
+  author: theamanrawat
+  severity: medium
+  description: |
+    An open redirect was detected. An attacker can redirect a user to a malicious site and possibly obtain sensitive information, modify data, and/or execute unauthorized operations.
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+    cwe-id: CWE-601
+  tags: redirect,generic,headless,vuln
+
+headless:
+  - steps:
+      - args:
+
+# digest: 4b0a00483046022100d2e126bcc335cc4484d188087554401ae93f26604f0787ab2ba6caed11d6f020022100b730ba1719137c020037f0f0d8cb086199eda7388cad010c245dd4392ce60694:922c64590222798bb761d5b6d8e72950

@@ -1,0 +1,36 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: springboot-actuator-2
+
+info:
+  name: Detect Springboot Actuators
+  author: that_juan_,dwisiswant0,wdahlenb
+  severity: info
+
+http:
+  - payloads:
+      Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+
+    threads: 100
+
+    raw:
+      - |
+        GET /actuator HTTP/1.1
+        Host: {{Subdomains}}
+        User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
+        Accept-Encoding: gzip, deflate
+        Accept: */*
+
+    matchers-condition: or
+    matchers:
+      - type: word
+        part: body
+        words:
+          - '"_links":'
+          - '"self":'
+          - '"health"'
+        condition: and
+
+      - type: dsl
+        name: "favicon"
+        dsl:
+          - "status_code==200 && (\"116323821\" == mmh3(base64_py(body)))"

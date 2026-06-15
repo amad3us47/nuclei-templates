@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: qilin-bastion-host-rce
+name: poc-yaml-qilin-bastion-host-rce

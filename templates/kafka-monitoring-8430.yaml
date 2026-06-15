@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: kafka-monitoring
+
+info:
+  name: Apache Kafka Monitor Exposure
+  author: pdteam
+  severity: low
+  tags: panel,kafka,apache
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}'
+
+    matchers:
+      - type: word
+        words:
+          - '>KafkaMonitor</a>'
+          - '>Kafka Monitor GUI</h1>'

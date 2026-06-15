@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: checkmarx-panel-detect
+
+info:
+  name: Checkmarx WebClient detector
+  author: joanbono
+  severity: info
+  tags: panel
+
+http:
+  - payloads:
+      Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+
+    threads: 100
+
+    raw:
+      - |
+        GET /cxwebclient/Login.aspx HTTP/1.1
+        Host: {{Subdomains}}
+    matchers:
+      - type: word
+        words:
+          - '/CxWebClient/webApp/Scripts/libs/authenticationScripts'
+        part: body

@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: minio-browser
+info:
+  name: MinIO Browser
+  author: pikpikcu
+  severity: info
+  tags: panel,minio
+  metadata:
+    shodan-query: title:"MinIO Browser"
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/minio/login"
+    matchers-condition: and
+    matchers:
+      - type: dsl
+        dsl:
+          - "contains(tolower(body), '<title>minio browser</title>')"
+      - type: status
+        status:
+          - 200

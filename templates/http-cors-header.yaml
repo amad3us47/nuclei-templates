@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: http-cors
+
+info:
+  name: HTTP CORS extraction
+  author: Arqsz
+  severity: info
+  description: "Extract CORS header if possible"
+  tags: misconfig,headers,remote,basic
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    host-redirects: true
+    max-redirects: 3
+
+    extractors:
+      - type: regex
+        part: all_headers
+        group: 1
+        regex:
+          - "(?i)cross-origin-resource-policy .*"

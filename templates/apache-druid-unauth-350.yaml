@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: apache-druid-unauth
+info:
+  name: Apache Druid unauth
+  author: unknown
+  severity: info
+
+  references:
+    - repo: https://github.com/apache/druid/
+params:
+  - root: '{{.BaseURL}}'
+
+http:
+  - method: POST

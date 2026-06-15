@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: frontify-takeover
+info:
+  name: frontify takeover detection
+  author: pdteam
+  severity: high
+  reference:
+    - https://github.com/EdOverflow/can-i-take-over-xyz
+  tags: takeover
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+    matchers:
+      - type: word
+        words:
+          - 404 - Page Not Found
+          - Oops… looks like you got lost
+        condition: and

@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: microsoft-api-csp-bypass
+
+info:
+  name: Content-Security-Policy Bypass - Microsoft API
+  author: renniepak,DhiyaneshDK
+  severity: medium
+  reference:
+    - https://github.com/renniepak/CSPBypass/blob/main/data.tsv
+  metadata:
+    verified: true
+  tags: xss,csp-bypass,microsoft-api,vuln
+
+flow: http(1) && headless(1)
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers:
+      - type: word
+        part: header
+        words:
+          - "Content-Security-Policy"
+          - "microsoft.com"
+        condition: and
+        internal: true
+
+headless:
+  - steps:
+      - action: navigate
+        args:
+
+# digest: 4b0a00483046022100807a6fbb1f9fc4dbcf5d04f591f450493b4ca57a9ad1d5655660d47c4d4ee332022100b80f5e833e2be8c5f8c89b85332575bd59c94670f956888fb6548b8b72890329:922c64590222798bb761d5b6d8e72950

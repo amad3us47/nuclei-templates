@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: yongyou-grp-u8-app-proxy-uploadfile
+
+info:
+  name: 用友 GRP-U8 U8AppProxy 任意文件上传
+  author: zan8in
+  severity: critical
+  description: |
+    用友 GRP-U8 U8AppProxy接口存在任意文件上传漏洞，攻击者通过漏洞可以获取服务器权限。
+    fofa: title="用友GRP-U8行政事业内控管理软件"
+  reference:
+    - https://mp.weixin.qq.com/s/vrfBOj62Wq54of4rcY-pIQ

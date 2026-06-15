@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: hidden-cookie-attributes
+info:
+  name: Hidden Cookie Attributes Test
+  author: qaisar
+  severity: medium
+  description: |
+    Detects potential security issues related to hidden attributes in cookies.
+
+tags:
+  - web
+
+http:
+  - method: GET
+    path:
+      - "/dashboard"
+      - "/user-settings"
+    headers:
+      cookie: "session_id=legitimate_session; httponly=true; secure=true; samesite=lax"
+  # Adjust the payload and parameters based on the target pages susceptible to hidden cookie attributes

@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: axis-detect
+
+info:
+  name: apache-axis-detect
+  author: dogasantos
+  severity: info
+  description: Axis and Axis2 detection

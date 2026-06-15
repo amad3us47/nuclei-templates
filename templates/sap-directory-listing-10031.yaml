@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: sap-directory-listing
+info:
+  name: SAP Directory Listing
+  author: unknown
+  severity: info
+
+params:
+  - root: "{{.BaseURL}}"
+
+variables:
+  - prefix: |
+      /
+      /sap/
+  - path: |
+      irj/go/km/navigation/
+http:
+  - method: GET

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: javamelody-detect
+
+info:
+  name: JavaMelody Monitoring Exposed
+  author: zan8in
+  severity: high
+  description: |
+    JavaMelody is a tool used to monitor Java or Java EE applications in QA and production environments. JavaMelody was detected on this web application. One option in the dashboard is to "View http sessions".
+    This can be used by an attacker to steal a user's session.
+    fofa: app="JavaMelody"
+  reference:
+    - https://www.acunetix.com/vulnerabilities/web/javamelody-publicly-accessible/
+    - https://github.com/javamelody/javamelody/wiki/UserGuide#16-security
+    - https://mp.weixin.qq.com/s/ye9qWPm0wcn90zoKQpExGg
+    - https://paper.seebug.org/705/

@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: sourceleaks
+
+info:
+  name: Source Code Leaks Detection Template
+  author: foulenzer
+  severity: medium
+  description: Searches Response body for information leakage
+  tags: sourcecode
+
+http:
+  - method: GET
+    redirects: true
+    max-redirects: 1
+    path:
+      - "{{BaseURL}}/"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '<!--'
+
+      - type: status
+        status:
+          - 200

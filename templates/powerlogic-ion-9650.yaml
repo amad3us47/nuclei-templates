@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: powerlogic-ion
+info:
+  name: PowerLogic ION Exposed
+  author: dhiyaneshDK
+  severity: low
+  reference:
+    - https://www.exploit-db.com/ghdb/6810
+  tags: panel
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}'
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - 'PowerLogic ION'
+      - type: status
+        status:
+          - 200

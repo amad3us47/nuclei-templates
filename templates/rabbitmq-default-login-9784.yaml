@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: rabbitmq-default-login
+info:
+  name: RabbitMQ admin Default Login
+  author: fyoorer,dwisiswant0
+  severity: high
+  tags: rabbitmq,default-login
+http:
+  - payloads:
+      Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+
+    threads: 100
+    raw:
+      - |
+        GET /api/whoami HTTP/1.1
+        Host: {{Subdomains}}
+        Authorization: Basic Z3Vlc3Q6Z3Vlc3Q=
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "application/json"
+        part: header
+      - type: word
+        words:
+          - "{\"name\":\"guest\""
+        part: body
+      - type: status
+        status:
+          - 200

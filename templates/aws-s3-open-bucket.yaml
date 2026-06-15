@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: aws-s3-open-bucket
+info:
+  name: AWS S3 Bucket Publicly Accessible
+  author: unknown
+  severity: info
+
+params:
+  - root: "{{.BaseURL}}"
+
+variables:
+  - endpoint: |
+      /
+      /static/
+      /assets/
+      /uploads/
+      /upload/
+      /images/
+      /imgs/
+      /attachments/
+
+http:
+  - method: GET

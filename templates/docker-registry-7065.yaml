@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+# info to search signature
+id: docker-registry
+info:
+  name: Docker Registry Exposed
+  author: unknown
+  severity: info
+
+http:
+  - method: GET
+
+reference:
+  - link: http://www.polaris-lab.com/index.php/archives/253/

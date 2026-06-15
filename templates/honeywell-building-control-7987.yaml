@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: honeywell-building-control
+info:
+  name: Honeywell Building Control
+  author: dhiyaneshDK
+  severity: info
+  tags: panel,iot
+  metadata:
+    shodan-query: 'html:"Honeywell Building Control"'
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '<title>Honeywell Building Control</title>'
+      - type: status
+        status:
+          - 200

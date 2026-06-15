@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: tongda-oa-api-ali-upload
+
+info:
+  name: 通达OA v11.8 api.ali.php任意文件上传漏洞
+  author: daffainfo
+  severity: critical
+  description: |
+    通达OA（OfficeAnywhere网络智能办公系统）是由北京通达信科科技有限公司自主研发的协同办公自动化软件，是与中国企业管理实践相结合形成的综合管理办公平台。通达存在任意文件上传漏洞，攻击者可以通过指定接口上传任意文件，获取服务器管理权限。
+    fofa-query: app="TDXK-通达OA"
+  reference:
+    - https://mp.weixin.qq.com/s/G6tSTQGl31xYgpMQnNx0dw

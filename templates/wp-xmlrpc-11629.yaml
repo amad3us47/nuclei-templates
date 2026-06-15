@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: wordpress-xmlrpc-file
+info:
+  name: WordPress xmlrpc
+  author: udit_thakkur
+  severity: info
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/xmlrpc.php"
+    matchers:
+      - type: status
+        status:
+          - 405

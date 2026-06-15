@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: open-game-panel
+info:
+  name: Open Game Panel
+  author: dhiyaneshDk
+  severity: info
+  reference: https://www.exploit-db.com/ghdb/7418
+  metadata:
+    shodan-query: 'http.title:"Open Game Panel"'
+  tags: panel
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/index.php"
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "<title>Open Game Panel</title>"
+      - type: status
+        status:
+          - 200

@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: yyoa-a6-userinfo-disclosure
+
+info:
+  name: 致远OA A6 initDataAssess.jsp 用户敏感信息泄露
+  author: zan8in
+  severity: low

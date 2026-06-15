@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: slocum-login
+
+info:
+  name: Slocum Fleet Mission Control Login
+  author: pussycat0x
+  severity: info
+  tags: panel,tech,slocum
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/sfmc/login"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "<title>Slocum Fleet Mission Control - Login</title>"
+
+      - type: status
+        status:
+          - 200

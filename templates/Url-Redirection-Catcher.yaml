@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: Url-Redirection-Catcher
+
+info:
+  name: Url Redirection Template Via Params
+  author: SirBugs
+  severity: low
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+    payloads:

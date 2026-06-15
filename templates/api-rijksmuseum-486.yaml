@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: api-rijksmuseum
+
+info:
+  name: Rijksmuseum API Test
+  author: daffainfo
+  severity: info
+  reference:
+    - https://data.rijksmuseum.nl/user-generated-content/api/
+    - https://github.com/daffainfo/all-about-apikey/blob/main/Art%20Design/Rijksmuseum.md
+  tags: token-spray,rijksmuseum
+
+self-contained: true
+http:
+  - method: GET
+    path:
+      - "https://www.rijksmuseum.nl/api/nl/usersets?key={{token}}&format=json&page=2"
+
+    matchers:
+      - type: word
+        part: body
+        words:
+          - '"count":'
+          - '"userSets":'
+          - '"user":'
+        condition: and

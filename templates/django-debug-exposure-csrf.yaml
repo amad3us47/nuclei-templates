@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: django-debug-exposure
+
+info:
+  name: Django Debug Exposure
+  author: shelled
+  severity: medium
+  tags: django,exposure
+
+http:
+  - method: POST
+    path:
+      - "{{BaseURL}}/admin/login/?next=/admin/"
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 403
+
+      - type: word
+        part: body
+        words:
+          - 'seeing the help section of this page because you have <code>DEBUG ='
+          - 'True</code>'
+        condition: and

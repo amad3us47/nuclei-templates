@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: joomla-lfi-comfabrik
+info:
+  name: Joomla LFI comfabrik
+  author: unknown
+  severity: info
+
+params:
+  - root: "{{.BaseURL}}/index.php"
+
+http:
+  - method: GET
+
+reference:
+  - link: https://www.exploit-db.com/exploits/48263

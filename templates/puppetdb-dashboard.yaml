@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: puppetdb-dashboard
+
+info:
+  name: PuppetDB Dashboard Exposure
+  author: DhiyaneshDk
+  severity: low
+  metadata:
+    verified: true
+    shodan-query: 'title:"PuppetDB: Dashboard"'
+  tags: misconfig,exposure,puppetdb
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/pdb/dashboard/index.html"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "PuppetDB: Dashboard"
+
+      - type: status
+        status:
+          - 200

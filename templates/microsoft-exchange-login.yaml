@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: exchange-login
+
+info:
+  name: Microsoft Exchange login page
+  author: dhiyaneshDK
+  severity: info
+  reference: https://www.exploit-db.com/ghdb/6739
+  tags: panel
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/owa/auth/logon.aspx'
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '<title>Exchange Log In</title>'
+          - '<title>Microsoft Exchange - Outlook Web Access</title>'
+      - type: status
+        status:
+          - 200

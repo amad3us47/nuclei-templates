@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: harbor-detect
+info:
+  name: Harbor Detect
+  author: pikpikcu
+  severity: info
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/'
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "<title>Harbor</title>"
+        part: body
+
+      - type: status
+        status:
+          - 200

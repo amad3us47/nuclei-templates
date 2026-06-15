@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: sapfiori-panel
+info:
+  name: SAP Fiori Instance Detection Template
+  author: righettod
+  severity: info
+  description: Try to detect the presence of a SAP Fiori instance via the login page
+  tags: panel,sap,fiori
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/fiori"
+      - "{{BaseURL}}/irj/portal/fiori"
+    matchers-condition: or
+    matchers:
+      - type: word
+        words:
+          - 'fioriLogin'
+          - 'action="/fiori"'
+        part: body
+        condition: and
+      - type: word
+        words:
+          - "UIPPortalPath"
+          - "/irj/portal/fiori"
+        part: body
+        condition: and

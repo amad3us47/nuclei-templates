@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: ngrok-takeover
+info:
+  name: ngrok takeover detection
+  author: pdteam
+  severity: high
+  reference:
+    - https://github.com/EdOverflow/can-i-take-over-xyz
+  tags: takeover
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+    matchers:
+      - type: word
+        words:
+          - ngrok.io not found
+          - Tunnel *.ngrok.io not found

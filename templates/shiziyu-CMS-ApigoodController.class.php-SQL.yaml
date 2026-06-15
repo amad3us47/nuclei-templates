@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: shiziyu-CMS-ApigoodController-class-php-SQL
+
+info:
+  name: 狮子鱼CMS ApigoodController.class.php SQL注入漏洞
+  author: daffainfo
+  severity: critical
+  description: |
+    狮子鱼CMS ApiController.class.php 参数过滤存在不严谨，导致SQL注入漏洞
+    fofa-query: "/seller.php?s=/Public/login"
+  reference:
+    - https://github.com/Threekiii/Awesome-POC/blob/master/CMS%E6%BC%8F%E6%B4%9E/%E7%8B%AE%E5%AD%90%E9%B1%BCCMS%20ApigoodController.class.php%20SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E.md

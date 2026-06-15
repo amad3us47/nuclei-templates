@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: gogs-install-exposure
+info:
+  name: Gogs install exposure
+  author: unknown
+  severity: info
+
+  references:
+    - repo: https://github.com/gogs/gogs
+params:
+  - root: "{{.BaseURL}}"
+
+http:
+  - method: GET

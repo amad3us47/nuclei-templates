@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: grails-database-admin-console
+info:
+  name: Grails database admin console
+  author: emadshanab
+  severity: medium
+  tags: grails,panel
+  reference: https://www.acunetix.com/vulnerabilities/web/grails-database-console/
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/dbconsole/'
+      - '{{BaseURL}}/h2-console/'
+    matchers:
+      - type: word
+        words:
+          - "<title>H2 Console</title>"

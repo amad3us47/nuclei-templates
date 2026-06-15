@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: hue-login-panel
+
+info:
+  name: Cloudera Hue Login Panel
+  author: For3stCo1d
+  severity: info
+  description: |
+    Cloudera Hue default admin credentials were discovered.
+    Fofa： title="Hue - 欢迎使用 Hue"
+    default admin login: admin/admin   hue/hue  hadoop/hadoop   cloudera/cloudera
+  reference:
+    - https://github.com/cloudera/hue

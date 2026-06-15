@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: graphql-depth-limit
+info:
+  name: GraphQL Query Depth Limit
+  author: unknown
+  severity: medium
+  description: Detects potential GraphQL query depth limit violations in the target
+author: YourName
+tags:
+  - web
+  - graphql-security
+http:
+- method: POST
+  path:
+    - "/graphql"
+    - "/execute"
+  matchers:
+  - type: regex
+    part: body
+    regex:
+    - "Query depth exceeds the limit"

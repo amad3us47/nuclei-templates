@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: jolokia-instance
+info:
+  name: Jolokia Version Disclosure
+  author: mavericknerd & dwisiswant0
+  severity: info
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/jolokia/version'
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '"timestamp":'
+          - '"protocol":'
+          - '"agent":'
+        condition: and
+      - type: status
+        status:
+          - 200

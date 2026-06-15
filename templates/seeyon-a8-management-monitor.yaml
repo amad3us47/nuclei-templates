@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: seeyon-a8-management-monitor
+
+info:
+  name: A8 Management Monitor
+  author: zan8in
+  severity: info
+  description: |
+    A8 Management Monitor
+    fofa：app="致远互联-OA"

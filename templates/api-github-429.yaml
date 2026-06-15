@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: api-github
+
+info:
+  name: GitHub API Test
+  author: zzeitlin
+  reference: https://docs.github.com/en/rest/reference/users
+  severity: info
+  tags: token-spray,github
+
+self-contained: true
+http:
+  - method: GET
+    path:
+      - "https://api.github.com/user"
+    headers:
+      Authorization: Basic {{base64('user:' + token)}}
+
+    matchers:
+      - type: word
+        part: body
+        words:
+          - '"login":'
+          - '"avatar_url":'
+        condition: and

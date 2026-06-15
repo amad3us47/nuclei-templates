@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: microsoft-exchange-panel
+info:
+  name: Microsoft Exchange Control Panel
+  author: r3dg33k
+  severity: info
+  description: Publicly accessible Microsoft Exchange Server Control Panel
+  tags: microsoft,panel
+  reference: https://docs.microsoft.com/en-us/answers/questions/58814/block-microsoft-exchange-server-2016-exchange-admi.html
+http:
+  - payloads:
+      Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+
+    threads: 100
+    raw:
+      - |
+        GET /owa/auth/logon.aspx?replaceCurrent=1&url={{Scheme}}://{{Subdomains}}/ecp HTTP/1.1
+        Host: {{Subdomains}}
+        User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
+        Accept-Encoding: gzip, deflate
+        Accept: */*
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - 'Exchange Admin Center'

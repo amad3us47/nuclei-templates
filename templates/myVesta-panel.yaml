@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: myVesta-panel
+
+info:
+  name: myVesta - Panel
+  author: 0xpugazh
+  severity: info
+  reference:
+    - https://www.myvestacp.com/
+  metadata:
+    verified: true
+    max-request: 1
+    shodan-query: http.title:"myVesta - LOGIN"
+  tags: myvestacp,panel,login
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}:8083/login/"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "<title>myVesta - LOGIN</title>"
+
+      - type: status
+        status:
+          - 200

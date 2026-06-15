@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: ASVS-4-0-3-V14-2-3
+
+info:
+  name: ASVS 14.2.3 Check
+  author: Hamed Salimian
+  severity: low
+  classification:
+    cwe-id: CWE-829
+  reference:
+    - https://cheatsheetseries.owasp.org/cheatsheets/Third_Party_Javascript_Management_Cheat_Sheet.html#subresource-integrity
+  tags: asvs,14.2.3
+  description: |
+    Verify that if application assets, such as JavaScript libraries, CSS or web fonts, are hosted externally on a Content Delivery Network (CDN) or external provider, Subresource Integrity (SRI) is used to validate the integrity of the asset.
+
+headless:
+  - steps:
+      - args:

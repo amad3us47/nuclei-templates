@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: hadoop-exposure
+
+info:
+  name: Apache Hadoop Exposure
+  author: pdteam
+  severity: low
+  tags: panel,apache,hadoop
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/dfshealth.html'
+    matchers:
+      - type: word
+        words:
+          - '<div class="navbar-brand">Hadoop</div>'

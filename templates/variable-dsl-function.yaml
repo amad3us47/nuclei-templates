@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: basic-example
+
+info:
+  name: Test HTTP Template
+  author: pdteam
+  severity: info
+
+variables:
+ a1: "{{to_lower(rand_base(5))}}"
+
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/?x={{a1}}"
+      - "{{BaseURL}}/?x={{a1}}"
+
+    extractors:
+      - type: dsl
+        dsl:
+          - a1

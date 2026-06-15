@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: solarwinds-servuftp-detect
+info:
+  name: SolarWinds Serv-U FileServer
+  author: johnk3r
+  severity: info
+  tags: solarwinds,panel
+http:
+  - payloads:
+      Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+
+    threads: 100
+    raw:
+      - |
+        GET / HTTP/1.1
+        Host: {{Subdomains}}
+        User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)
+    matchers-condition: and
+    matchers:
+      - type: regex
+        part: header
+        regex:
+          - "Serv-U"
+      - type: status
+        status:
+          - 200

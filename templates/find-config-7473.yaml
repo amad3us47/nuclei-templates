@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: config-xml-database-info
+info:
+  name: Search for config.xml
+  author: Clark
+  severity: medium
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/debug/config.xml"
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - appSettings
+      - type: status
+        status:
+          - 200

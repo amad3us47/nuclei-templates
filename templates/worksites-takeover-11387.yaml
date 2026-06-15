@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: worksites-takeover
+info:
+  name: worksites takeover detection
+  author: melbadry9
+  severity: high
+  tags: takeover
+  reference: https://blog.melbadry9.xyz/dangling-dns/xyz-services/ddns-worksites
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+    matchers:
+      - type: regex
+        regex:
+          - "(?:Company Not Found|you&rsquo;re looking for doesn&rsquo;t exist)"

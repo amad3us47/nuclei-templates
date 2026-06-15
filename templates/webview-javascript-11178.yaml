@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: webview-javascript-enabled
+info:
+  name: Webview JavaScript enabled
+  author: gaurang
+  severity: info
+file:
+  - extensions:
+      - all
+    matchers:
+      - type: word
+        words:
+          - "Landroid/webkit/WebSettings;->setJavaScriptEnabled(Z)V"

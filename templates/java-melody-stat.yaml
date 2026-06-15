@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: java-melody-stat
+info:
+  name: JavaMelody Monitoring Exoised
+  author: unknown
+  severity: info
+
+params:
+  - root: "{{.BaseURL}}"
+
+
+
+variables:
+  - stats: |
+      /..%3B/monitoring
+      /monitoring
+
+http:
+  - method: GET

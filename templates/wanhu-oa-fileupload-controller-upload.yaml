@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: wanhu-oa-fileupload-controller-upload
+
+info:
+  name: 万户 OA Upload RCE
+  author: unknown
+  severity: critical
+  description: |
+    fofa: app="万户网络-ezOFFICE"

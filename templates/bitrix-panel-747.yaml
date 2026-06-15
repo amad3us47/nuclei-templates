@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: bitrix-login
+
+info:
+  name: Bitrix Login Panel
+  author: juicypotato1
+  severity: info
+  tags: panel,bitrix
+
+http:
+  - payloads:
+      Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+
+    threads: 100
+
+    raw:
+      - |
+        GET /bitrix/admin/ HTTP/1.1
+        Host: {{Subdomains}}
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "USER_LOGIN"
+          - "/bitrix/js/main/"
+        part: body
+        condition: and
+
+      - type: status
+        status:
+          - 200

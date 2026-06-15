@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: somfy-login
+info:
+  name: Somfy Login Page
+  author: DhiyaneshDK
+  severity: info
+  tags: panel
+http:
+  - payloads:
+      Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+
+    threads: 100
+    raw:
+      - |
+        GET /m_login.htm HTTP/1.1
+        Host: {{Subdomains}}
+        User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "Home motion by Somfy"
+      - type: status
+        status:
+          - 200

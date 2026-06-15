@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: duckduckgo-api-csp-bypass
+
+info:
+  name: Content-Security-Policy Bypass - DuckDuckGo API
+  author: renniepak,DhiyaneshDK
+  severity: medium
+  reference:
+    - https://github.com/renniepak/CSPBypass/blob/main/data.tsv
+  metadata:
+    verified: true
+  tags: xss,csp-bypass,duckduckgo-api,vuln
+
+flow: http(1) && headless(1)
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers:
+      - type: word
+        part: header
+        words:
+          - "Content-Security-Policy"
+          - "duckduckgo.com"
+        condition: and
+        internal: true
+
+headless:
+  - steps:
+      - action: navigate
+        args:
+
+# digest: 4a0a00473045022100dcfbdee005b52f2f3c2bb480be1178c8c0111d91f0d5537551ab978c2b32eaea02205438a56c4566e996e6bb6a886a067a0de70ec414d5c0d419a9680bcbed8bd833:922c64590222798bb761d5b6d8e72950

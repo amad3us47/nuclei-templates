@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: wayos-panel
+
+info:
+  name: WAYOS-智能路由管理系统
+  author: zan8in
+  severity: info

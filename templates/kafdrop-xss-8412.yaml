@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: kafdrop-xss
+info:
+  name: KafDrop XSS
+  author: unknown
+  severity: info
+
+  references:
+    - author: j3ssie
+    - repo: https://github.com/obsidiandynamics/kafdrop
+params:
+  - root: "{{.BaseURL}}"
+
+http:
+  - method: GET

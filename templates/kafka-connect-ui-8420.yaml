@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: kafka-connect-ui
+
+info:
+  name: Apache Kafka Connect UI Exposure
+  author: pdteam
+  severity: low
+  tags: panel,kafka
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}'
+
+    matchers:
+      - type: word
+        words:
+          - '<title>Kafka Connect UI</title>'

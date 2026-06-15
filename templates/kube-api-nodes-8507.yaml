@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: kube-api-nodes
+info:
+  name: Kube API Nodes
+  author: sharath
+  severity: info
+  description: Scans for kube nodes
+  tags: tech,k8s,kubernetes,devops,kube
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/api/v1/nodes"
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+
+      - type: word
+        part: body
+        words:
+          - '"NodeList":'
+          - '"items":'
+        condition: and

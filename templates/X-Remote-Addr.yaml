@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: x-remote-addr
+
+info:
+  name: x-remote-addr
+  author: Kabilan S
+  severity: low
+
+http:
+  - method: GET
+    # Example of sending some headers to the servers
+    headers:
+
+      X-Remote-Addr: "evil.com"
+    path:
+      - "{{BaseURL}}/"
+    matchers:
+      - type: word
+        words:
+          - "evil"

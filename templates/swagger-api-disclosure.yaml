@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: swagger-disclosure
+
+info:
+  name: Public Swagger API Desclosure
+  author: pdteam
+  severity: info
+
+
+  r13:
+    request:
+      method: GET
+      path: /api/swagger-ui.html
+    expression: |
+      response.status == 200 &&
+      (response.body.bcontains(b'swagger:') ||
+      response.body.bcontains(b'Swagger 2.0') ||
+      response.body.bcontains(b"\"swagger\":") ||
+      response.body.bcontains(b'Swagger UI') ||
+      response.body.bcontains(b'**token**:'))
+
+  r14:
+    request:
+      method: GET
+      path: /v2/api-docs
+    expression: |
+      response.status == 200 &&
+      (response.body.bcontains(b'swagger:') ||
+      response.body.bcontains(b'Swagger 2.0') ||
+      response.body.bcontains(b"\"swagger\":") ||
+      response.body.bcontains(b'Swagger UI') ||
+      response.body.bcontains(b'**token**:'))

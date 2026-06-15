@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: nifi-api-unauthorized-access
+
+info:
+    name: Apache Nifi Api Unauthorized Access
+    author: wulalalaaa(https://github.com/wulalalaaa)
+    severity: high
+    description: Apache NiFi Api未授权访问导致命令执行
+    reference:
+        - https://nifi.apache.org/docs/nifi-docs/rest-api/index.html

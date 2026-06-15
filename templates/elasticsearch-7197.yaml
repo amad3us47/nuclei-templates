@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: elasticsearch
+
+info:
+  name: ElasticSearch Information Disclosure
+  author: Shine
+  severity: low
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/_cat/indices?v'
+      - '{{BaseURL}}:9200/_cat/indices?v'
+      - '{{BaseURL}}/_all/_search'
+      - '{{BaseURL}}:9200/_all/_search'
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '"took":'
+      - type: status
+        status:
+          - 200

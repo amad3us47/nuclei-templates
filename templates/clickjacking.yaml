@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: detect-clickjacking
+info:
+  name: Detect Clickjacking Vulnerability
+  author: unknown
+  description: Detects if a URL is vulnerable to clickjacking.
+  severity: high
+  tags:
+    - security
+    - clickjacking
+inputs:
+  target:
+    type: url
+    description: The target URL to scan for clickjacking vulnerability.
+author:
+  name: [Satya Prakash]
+  twitter: [@0xKayala]
+  website: [0xKayala.medium.com]
+  github: [0xKayala]
+
+http:
+  - method: GET

@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: custom-datapump-source-code-detect
+
+info:
+  name: Custom datapump source code detect
+  author: pdteam
+  severity: medium
+  tags: config,exposure
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/connect/results/api-docs/service.json'
+    matchers:
+      - type: word
+        words:
+          - 'swagger'
+          - 'info'
+        condition: and

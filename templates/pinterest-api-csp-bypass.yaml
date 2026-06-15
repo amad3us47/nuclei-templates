@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: pinterest-api-csp-bypass
+
+info:
+  name: Content-Security-Policy Bypass - Pinterest API
+  author: renniepak,DhiyaneshDK
+  severity: medium
+  reference:
+    - https://github.com/renniepak/CSPBypass/blob/main/data.tsv
+  metadata:
+    verified: true
+  tags: xss,csp-bypass,pinterest-api,vuln
+
+flow: http(1) && headless(1)
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers:
+      - type: word
+        part: header
+        words:
+          - "Content-Security-Policy"
+          - "pinterest.com"
+        condition: and
+        internal: true
+
+headless:
+  - steps:
+      - action: navigate
+        args:
+
+# digest: 490a0046304402201cf99a871a6b19960995c632d825e922c9b4903f063070e56bc4f23c8c05d91c02200ad9b2e236efc97f90aa882f6b2191e548f5b99c839295d0aba1e59c87e97028:922c64590222798bb761d5b6d8e72950

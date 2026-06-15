@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: basic-request-path
+
+info:
+  name: Basic Request Path
+  author: pdteam
+  severity: info
+
+websocket:
+  - address: '{{Scheme}}://{{Hostname}}'
+    inputs:
+      - data: hello
+    matchers:
+      - type: word
+        words:
+          - world
+        part: response

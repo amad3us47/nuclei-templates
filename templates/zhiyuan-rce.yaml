@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: zhiyuan-rce
+
+info:
+  name: 致远OA A8 rce
+  author: str1am
+  severity: critical
+  tags: zhiyuan
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/seeyon/htmlofficeservlet"
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "DBSTEP"
+          - "htmoffice operate"
+        part: body
+        condition: and

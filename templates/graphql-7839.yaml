@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: Graphql-Playground-Exposure
+info:
+  name: Graphql Playground Exposure
+  author: Kabilan S
+  severity: low
+  tags: panel
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/api/pensieve/'
+    matchers:
+      - type: word
+        words:
+          - '<span class="title">GraphQL Playground</span>'

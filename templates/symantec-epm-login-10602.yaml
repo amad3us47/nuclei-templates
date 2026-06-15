@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: symantec-epm-login
+info:
+  name: Symantec Endpoint Protection Manager
+  author: princechaddha
+  severity: info
+  metadata:
+    shodan-query: http.title:"Symantec Endpoint Protection Manager"
+  tags: symantec,panel,login
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}'
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "<title>Symantec Endpoint Protection Manager</title>"
+        part: body
+      - type: status
+        status:
+          - 200

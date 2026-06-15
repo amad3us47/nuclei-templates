@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: httpbin-panel
+
+info:
+  name: HTTPBin Panel Detect
+  author: Adam Crosser
+  severity: info
+  reference:
+    - https://github.com/postmanlabs/httpbin
+  metadata:
+    shodan-query: http.title:"httpbin.org"
+  tags: panel,httpbin,oss
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}'
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '<title>httpbin.org</title>'
+
+      - type: status
+        status:
+          - 200

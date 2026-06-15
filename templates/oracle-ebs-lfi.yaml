@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: oracle-ebs-lfi
+info:
+  name: Oracle EBS bispgrapgh Path Traversal
+  author: unknown
+  severity: info
+
+  references:
+    - links:
+        - https://www.blackhat.com/docs/us-16/materials/us-16-Litchfield-Hackproofing-Oracle-eBusiness-Suite-wp-4.pdf
+        - https://www.blackhat.com/docs/us-16/materials/us-16-Litchfield-Hackproofing-Oracle-eBusiness-Suite.pdf
+        - http://www.davidlitchfield.com/AssessingOraclee-BusinessSuite11i.pdf
+params:
+  - root: "{{.BaseURL}}"
+
+http:
+  - method: GET

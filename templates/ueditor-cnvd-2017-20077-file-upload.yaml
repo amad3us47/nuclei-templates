@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: ueditor-cnvd-2017-20077-file-upload
+name: poc-yaml-ueditor-cnvd-2017-20077-file-upload

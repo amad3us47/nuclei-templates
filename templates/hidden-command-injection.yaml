@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: hidden-command-injection
+id hidden-command-injection
+info
+  name Hidden Command Injection Test
+  author qaisar
+  severity high
+  description
+    Detects potential security issues related to hidden command injection vulnerabilities.
+
+tags
+  - web
+
+requests
+  - method POST
+    path
+      - execute-command
+      - process-input
+    headers
+      content-type [applicationjson]
+    data
+      - raw '{input ; ls -la}'
+  # Adjust the payload and parameters based on the target pages susceptible to hidden command injection

@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: gloo-unauth
+info:
+  name: Gloo UI Unauthentication
+  author: unknown
+  severity: info
+
+  references:
+    - repo: https://github.com/containous/traefik
+params:
+  - root: "{{.BaseURL}}"
+
+http:
+  - method: POST

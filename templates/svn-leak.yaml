@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: svn-leak
+info:
+  name: SVN Leak Source
+  author: unknown
+  severity: info
+
+params:
+  - root: '{{.BaseURL}}'
+
+variables:
+  - svnfile: |
+      .svn/entries
+      .svn/all-wcprops
+      CVS/Entries
+
+http:
+  - method: GET

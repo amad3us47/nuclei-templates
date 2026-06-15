@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: couchdb-exposure
+info:
+  name: couchdb exposure
+  author: organiccrap
+  severity: low
+  tags: panel,couchdb
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/_all_dbs'
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - CouchDB/
+          - Erlang OTP/
+        part: header
+        condition: and
+
+      - type: status
+        status:
+          - 200

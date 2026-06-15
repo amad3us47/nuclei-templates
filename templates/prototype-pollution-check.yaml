@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: prototype-pollution-check
+
+info:
+  name: Prototype Pollution Check
+  author: pdteam
+  severity: medium
+  metadata:
+    max-request: 8
+    verified: true
+  tags: headless,vuln
+
+headless:
+  - steps:
+      - args:
+
+# digest: 490a00463044022019a45f47ab82b37c73a40d6116a659fc7fee313d6385b758458cb99d62a6ba5f022037f136146fdc0b51edd200db9ce11a0936a5f3b48e2442562c5037a57cd0987b:922c64590222798bb761d5b6d8e72950

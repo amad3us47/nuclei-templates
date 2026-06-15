@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/projectdiscovery/nuclei/dev/pkg/templates/nuclei-jsonschema.json
+id: couchbase-buckets-rest-api
+
+info:
+  name: Unauthenticated Couchbase Buckets REST API
+  author: geeknik
+  reference:
+    - https://docs.couchbase.com/server/current/rest-api/rest-bucket-intro.html
+    - https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-couchbase-bucket.html
+  severity: info
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/pools/default/buckets"
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - '"couchbase":'
+          - '"bucket":'
+          - '"data":'
+        condition: and
+      - type: word
+        part: header
+        words:
+          - 'application/json'
