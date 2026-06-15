@@ -3,7 +3,7 @@
 
 # Usage
 
-## Running all templates can be compute intensive
+#### Running all templates can be compute intensive
 
 ```
 python nuclei.py -d example.com
